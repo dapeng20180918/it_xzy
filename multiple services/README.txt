@@ -1,3 +1,4 @@
+#############################################################################################
 elaster stack
 #############################################################################################
 
@@ -28,6 +29,7 @@ management.network.cidr
 	
 #/etc/init.d/cloud-management restart
 
+#############################################################################################
 web servers
 #############################################################################################
 
@@ -53,6 +55,36 @@ web servers
 7 根据 default.sql 插入基本信息
 8 运行 portal\nginx-1.8.0\nginx.exe
 9 停防火墙
+
+#############################################################################################
+Linux 安装部署
+#############################################################################################
+[DB] 安装系统选择mysql
+create database demo character set utf8; 
+--第一次启动java, nohup...
+use demo;
+set names utf8;
+--插入数据
+
+[system]
+#/etc/init.d/iptables stop
+#/etc/init.d/mysqld start
+
+[java]
+#tar zxvf jdk-8u171-linux-x64.tar.gz 
+#vi application.properties 
+#nohup /opt/jdk1.8.0_171/bin/java -jar /opt/project/demo-0.0.1-SNAPSHOT.war &
+
+
+[nginx]
+#yum -y install gcc zlib zlib-devel pcre-devel openssl openssl-devel
+#tar zxvf ngx_openresty-1.7.7.1.tar.gz 
+#cd ngx_openresty-1.7.7.1
+#./configure;make;make install
+
+#vi /opt/project/nginx.conf
+--edit   include     /usr/local/openresty/nginx/conf/mime.types;
+#/usr/local/openresty/nginx/sbin/nginx -p /usr/local/openresty/nginx -c /opt/project/nginx.conf
 
 
 
