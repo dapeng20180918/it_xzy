@@ -98,7 +98,7 @@ ul.padding20 { padding-left: 0px!important; margin: 0 0 0 20px;}
 .mainr1 .formblack .control-group button { margin-top:30px;}
 .mainr1 .page-header { margin: 20px 0 20px; border:none;}
 .mainr1 .page-header h4 span,.mainr2 .main2 .page-header h4 span {border-bottom: solid 3px #2090ff; padding: 0 8px 19px; color: #0068b7;}
-.mainr1 .table{ /*border: solid 1px #d1e5ff;*/ margin: 20px 0 10px 0;}
+.mainr1 .table{ border: solid 1px #d1e5ff; margin: 20px 0 10px 0;}
 .mainr1 .table tr th, .main2 .table tr th{ border-right: solid 1px #dee7ef; background: #eef5f8; font-weight: normal; color: #135cc8;}
 .mainr1 .table tr td, .main2 .table tr td{ border-right: solid 1px #dee7ef;}
 .mainr1 .line { border-top: solid 1px #dbe3ed; padding-top: 10px; margin-top:15px;}

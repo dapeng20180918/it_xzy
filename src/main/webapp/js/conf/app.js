@@ -20,12 +20,12 @@ myApp.config(["$stateProvider", "$urlRouterProvider", '$httpProvider', function 
 					<div ng-include src="\'views/user/navbar.html\'"></div>',
         controller: 'MainCtrl'
     })
-    .state("service", {
+/*    .state("service", {
         url: "/service",
         template: '<div ng-include src="\'views/service/header.html\'"></div> \
 					<div ng-include src="\'views/service/navbar.html\'"></div>',
         controller: 'MainCtrl'
-    })
+    })*/
 
     //user
 	.state("main.user", {

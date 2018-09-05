@@ -102,7 +102,6 @@ myApp.config(["$stateProvider", "$urlRouterProvider", '$httpProvider', function 
         url: "/bigdata_platform",
         templateUrl: "views/service/bigdata_platform.html",
         controller: 'BDSettingCtrl'
-    })
-    ;
+    });
 
 }]);
