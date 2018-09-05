@@ -1,0 +1,258 @@
+<div class="col-sm-8 col-md-9 col-lg-10 mainright">
+	<ul class="breadcrumb" contenteditable="false">
+		<li><a href="">并行分析与数据挖掘</a><span class="divider"></span></li>
+		<li class="active">算法库管理</li>
+	</ul>
+	<!-- mainr1 -->
+	<div class="mainr1">
+		<div class="page-header">
+			<div class="btn-group" >
+				<button type="button" class="btn btn-default" data-toggle="modal" data-target="#myCreateModal">
+					<span class="glyphicon glyphicon-plus-sign"></span>添加
+				</button>
+				<button type="button" class="btn btn-default" data-toggle="modal" data-target="#myInfoModal" ng-disabled="!ifSelectedUser">
+					<span class="glyphicon glyphicon-info-sign"></span>编辑
+				</button>
+				<button type="button" class="btn btn-default" data-toggle="modal" data-target="#myDeleteModal" ng-disabled="!ifSelectedUser">
+					<span class="glyphicon glyphicon-remove"></span>删除
+				</button>
+			</div>
+		</div>
+		
+		<div class="col-lg-12 mainright">
+			<!-- 列表查看 -->
+			<div class="col-lg-12">
+				<h4>
+					<span>算法列表</span>
+					<form class="form-search form-inline f-search" >
+						<input class="input-medium search-query form-control" type="text" 
+						ng-model="searchKey" placeholder="输入搜索关键字">
+					</form>
+				</h4>
+				<div>
+					<div class="mainr1-z">
+						<table class="table">
+							<thead>
+								<tr>
+									<th class="mr_input">选择</th>
+									<th>算法库名称</th>
+									<th>数据适配器</th>
+									<th>算法类型</th>
+									<th>创建人</th>
+									<th>创建时间</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr ng-repeat="user in users | filter : searchKey" value={{user.id}} >
+									<td class="mr_input"><input type="radio" name="myRadio" value={{user.id}} ng-click=clickRadio(user)></td>
+									<td>{{user.name}}</td>
+									<td>{{adapterMap[user.adapter_id]}}</td>
+									<td>{{user.class_type}}</td>
+									<td>{{user.user_name}}</td>
+									<td>{{user.create_date | date : 'yyyy-MM-dd HH:mm:ss'}}</td>
+								</tr>
+							</tbody>
+							<tfoot>
+								<tr class="active">
+									<td colspan="10" class="text-right">
+										共计{{(users | filter : searchKey).length}}条记录
+									</td>
+								</tr>
+							</tfoot>
+						</table>
+					</div>
+				</div>
+			</div>
+			
+			<!-- 添加 -->
+			<div class="modal fade" id="myCreateModal" data-backdrop="static" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+							<h4 class="modal-title" id="myModalLabel">添加算法</h4>
+						</div>
+						<div class="modal-body">
+							<form class="form-horizontal">
+								<div class="form-group">
+									<label class="col-sm-3 control-label">算法库名称:</label>
+									<div class="col-sm-8">
+										<input type="text" ng-model="createUser.name"  class="form-control">
+									</div>
+								</div>
+								
+								<div class="form-group">
+									<label class="col-sm-3 control-label">数据适配器:</label>
+									<div class="col-sm-8">
+										<select ng-model="createUser.adapter_id" class="form-control"
+										ng-options="x.id as x.name for x in adapterArray"></select>
+									</div>
+								</div>
+								
+								<div class="form-group">
+									<label class="col-sm-3 control-label">算法jar:</label>
+									<div class="col-sm-8">
+										<input type="file" onchange='angular.element(this).scope().fileChanged(this)' /> <!-- accept=".jar" -->
+									</div>
+								</div>
+								 
+								<div class="form-group">
+									<label class="col-sm-3 control-label">算法类名:</label>
+									<div class="col-sm-8">
+										<input type="text" ng-model="createUser.class_name" class="form-control">
+									</div>
+								</div>
+								
+								<div class="form-group">
+									<label class="col-sm-3 control-label">算法参数:</label>
+									<div class="col-sm-8">
+										<textarea rows="3" cols="40" ng-model="createUser.class_param" class="form-control"></textarea>
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-sm-3 control-label">算法类型:</label>
+									<div class="col-sm-8">
+										<select class="form-control" ng-model="createUser.class_type">
+											<option ng-selected=true>数据加工</option>
+											<option>数据分析</option>
+										</select>
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-sm-3 control-label">描述:</label>
+									<div class="col-sm-8">
+										<textarea rows="3" cols="40" ng-model="createUser.description" class="form-control"></textarea>
+									</div>
+								</div>
+								
+							</form>	
+
+						</div>
+						<div class="modal-footer">
+							<div class="form-group">
+								<label class="col-sm-8 control-label"></label>
+
+								<button class="btn btn-default" ng-disabled="error || incomplete" data-dismiss="modal">
+									<span class="glyphicon glyphicon-remove"></span>取消
+								</button>
+								<button class="btn btn-success" ng-disabled="error || incomplete" ng-click="createConfirm()" submit-button>
+									<span class="glyphicon glyphicon-ok"></span>提交
+								</button>
+							</div>
+						</div>
+					</div><!-- /.modal-content -->
+				</div><!-- /.modal -->
+			</div>
+
+			<!-- 详情 -->
+			<div class="modal fade" id="myInfoModal" data-backdrop="static" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+							<h4 class="modal-title" id="myModalLabel">编辑算法</h4>
+						</div>
+						<div class="modal-body">
+							<form class="form-horizontal">
+								<div class="form-group">
+									<label class="col-sm-3 control-label">算法库名称:</label>
+									<div class="col-sm-8">
+										<input type="text" ng-model="selectedUser.name" class="form-control">
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-sm-3 control-label">创建人:</label>
+									<div class="col-sm-8">
+										<input type="text" ng-model="selectedUser.user_name" class="form-control" ng-disabled=true>
+									</div>
+								</div>
+								
+								<div class="form-group">
+									<label class="col-sm-3 control-label">创建时间:</label>
+									<div class="col-sm-8">
+										<input type="text" ng-model="selectedUser.create_date" class="form-control" ng-disabled=true>
+									</div>
+								</div> 
+								<div class="form-group">
+									<label class="col-sm-3 control-label">数据适配器:</label>
+									<div class="col-sm-8">
+										<select ng-model="selectedUser.adapter_id" class="form-control"
+										ng-options="x.id as x.name for x in adapterArray"></select>
+									</div>
+								</div>
+								
+								<div class="form-group">
+									<label class="col-sm-3 control-label">算法jar:</label>
+									<div class="col-sm-8">
+										<input type="text" ng-model="selectedUser.jar_name" class="form-control" ng-disabled=true>
+									</div>
+								</div> 
+								<div class="form-group">
+									<label class="col-sm-3 control-label">算法类名:</label>
+									<div class="col-sm-8">
+										<input type="text" ng-model="selectedUser.class_name" class="form-control">
+									</div>
+								</div>
+								
+								<div class="form-group">
+									<label class="col-sm-3 control-label">算法参数:</label>
+									<div class="col-sm-8">
+										<textarea rows="3" cols="40" ng-model="selectedUser.class_param" class="form-control"></textarea>
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-sm-3 control-label">算法类型:</label>
+									<div class="col-sm-8">
+										<input type="text" ng-model="selectedUser.class_type" class="form-control" ng-disabled=true>
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-sm-3 control-label">描述:</label>
+									<div class="col-sm-8">
+										<textarea rows="3" cols="40" ng-model="selectedUser.description" class="form-control"></textarea>
+									</div>
+								</div>
+							</form>
+						</div>
+						<div class="modal-footer">
+							<div class="form-group">
+								<label class="col-sm-8 control-label"></label>
+
+								<button class="btn btn-default" ng-disabled="error || incomplete" ng-click="updateCancel()">
+									<span class="glyphicon glyphicon-hand-left"></span>返回
+								</button>
+								<button class="btn btn-success" ng-disabled="error || incomplete" ng-click="updateConfirm()" submit-button>
+									<span class="glyphicon glyphicon-ok"></span>保存
+								</button>
+							</div>
+						</div>
+					</div><!-- /.modal-content -->
+				</div><!-- /.modal -->
+			</div>
+
+			<!-- 删除 -->
+			<div class="modal fade" id="myDeleteModal" data-backdrop="static" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+							<h4 class="modal-title" id="myModalLabel">删除算法</h4>
+						</div>
+						<div class="modal-body">
+							<span>&nbsp;&nbsp;确定要删除算法【 {{selectedUser.name}} 】吗？</span>
+						</div>
+						<div class="modal-footer">
+						<label class="col-sm-8 control-label"></label>
+							<button class="btn btn-default" ng-disabled="error || incomplete" data-dismiss="modal">
+								<span class="glyphicon glyphicon-remove"></span>取消
+							</button>
+							<button class="btn btn-success" ng-disabled="error || incomplete" ng-click="deleteConfirm()" submit-button>
+								<span class="glyphicon glyphicon-ok"></span>确定
+							</button>
+						</div>
+					</div><!-- /.modal-content -->
+				</div><!-- /.modal -->
+			</div>
+		</div>
+	</div>
+</div>

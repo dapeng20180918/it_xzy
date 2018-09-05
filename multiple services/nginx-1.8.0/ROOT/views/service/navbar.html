@@ -1,0 +1,38 @@
+<div class="container-fluid main" >
+	<div class="row mainrow ">
+		<!-- /sidebar --> 
+		<div class="col-sm-3 col-md-3 col-lg-2 sidebar">
+			<ul>
+				<li><span class="icon-resource float"></span>资源存储与管理
+					<ul class="padding20">
+						<li><a ui-sref="service.data_source"> > 数据源管理</a></li>
+						<li><a ui-sref="service.data_collect"> > 数据采集</a></li>
+						<li><a ui-sref="service.data_storage"> > 数据存储</a></li>
+						<li><a ui-sref="service.data_schedule"> > 管理服务</a></li>
+					</ul>
+				</li>
+
+				<li><span class="icon-analysis float"></span> 并行分析与数据挖掘
+					<ul class="padding20">
+						<li><a ui-sref="service.bd_adapter"> > 数据适配</a></li>
+						<li><a ui-sref="service.bd_algorithm"> > 算法库管理</a></li>
+						<li><a ui-sref="service.bd_schedule"> > 并行调度</a></li>
+					</ul>
+				</li>
+
+				<li><span class="icon-control float"></span>智能运控管理
+					<ul class="padding20">
+						<li><a ui-sref="service.cloud_platform"> > 云平台管控</a></li>
+						<li><a ui-sref="service.bigdata_platform"> > 大数据分析平台管控</a></li>
+					</ul>
+				</li>
+				
+
+			</ul>
+		</div>
+		<!-- /sidebar --> 
+
+		<!-- mainright --> 
+		<div ui-view></div>
+	</div>    
+</div> 

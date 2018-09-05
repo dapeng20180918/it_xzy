@@ -1,0 +1,240 @@
+<div class="col-sm-8 col-md-9 col-lg-10 mainright">
+	<ul class="breadcrumb" contenteditable="false">
+		<li><a href="">资源存储与管理</a><span class="divider"></span></li>
+		<li class="active">数据源</li>
+	</ul>
+	<!-- mainr1 -->
+	<div class="mainr1">
+		<div class="page-header">
+
+			<div class="btn-group" >
+				<button type="button" class="btn btn-default" data-toggle="modal" data-target="#myCreateModal">
+					<span class="glyphicon glyphicon-plus-sign"></span>添加
+				</button>
+				<button type="button" class="btn btn-default" data-toggle="modal" data-target="#myInfoModal" ng-disabled="!ifSelectedUser">
+					<span class="glyphicon glyphicon-info-sign"></span>编辑
+				</button>
+				<button type="button" class="btn btn-default" data-toggle="modal" data-target="#myDeleteModal" ng-disabled="!ifSelectedUser">
+					<span class="glyphicon glyphicon-remove"></span>删除
+				</button>
+			</div>
+		</div>
+
+		<div class="col-lg-12 mainright">
+			<!-- 列表查看 -->
+			<div class="col-lg-12">
+				<h4><span>数据源列表</span> 
+					<form class="form-search form-inline f-search" >
+						<input class="input-medium search-query form-control" type="text" 
+						ng-model="searchKey" placeholder="输入搜索关键字">
+					</form>
+				</h4>
+				<div>
+					<div class="mainr1-z">
+						<table class="table">
+							<thead>
+								<tr>
+									<th class="mr_input">选择</th>
+									<th>数据源名称</th>
+									<th>IP</th>
+									<th>数据目录</th>
+									<th>创建人</th>
+									<th>创建时间</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr ng-repeat="user in users | filter : searchKey" value={{user.id}} >
+									<td class="mr_input"><input type="radio" name="myRadio" value={{user.id}} ng-click=clickRadio(user)></td>
+									<td>{{user.name}}</td>
+									<td>{{user.source_ip}}</td>
+									<td>{{user.source_location}}</td>
+									<td>{{user.user_name}}</td>
+									<td>{{user.create_date | date : 'yyyy-MM-dd HH:mm:ss'}}</td>
+								</tr>
+							</tbody>
+							<tfoot>
+								<tr class="active">
+									<td  colspan="10" class="text-right">
+										共计{{(users | filter : searchKey).length}}条记录
+									</td>
+								</tr>
+							</tfoot>
+						</table>
+					</div>
+				</div>
+			</div>
+
+			<!-- 添加 -->
+			<div class="modal fade" id="myCreateModal" data-backdrop="static" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+							<h4 class="modal-title" id="myModalLabel">添加数据源</h4>
+						</div>
+						<div class="modal-body">
+							<form class="form-horizontal">
+								<div class="form-group">
+									<label class="col-sm-3 control-label">数据源名称:</label>
+									<div class="col-sm-8">
+										<input type="text" ng-model="createUser.name"  class="form-control">	
+									</div>
+								</div> 
+
+								<div class="form-group">
+									<label class="col-sm-3 control-label">IP:</label>
+									<div class="col-sm-8">
+										<input type="text" ng-model="createUser.source_ip"  class="form-control">
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-sm-3 control-label">用户名:</label>
+									<div class="col-sm-8">
+										<input type="text" ng-model="createUser.source_name"  class="form-control">
+									</div>
+								</div> 
+								<div class="form-group">
+									<label class="col-sm-3 control-label">密码:</label>
+									<div class="col-sm-8">
+										<input type="password" ng-model="createUser.source_password"  class="form-control">
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-sm-3 control-label">数据目录:</label>
+									<div class="col-sm-8">
+										<input type="text" ng-model="createUser.source_location" class="form-control">
+									</div>
+								</div> 
+								<div class="form-group">
+									<label class="col-sm-3 control-label">描述:</label>
+									<div class="col-sm-8">
+										<textarea rows="3" cols="40" ng-model="createUser.description" class="form-control"></textarea>
+									</div>
+								</div>
+							</form>	
+
+						</div>
+						<div class="modal-footer">
+							<div class="form-group">
+								<label class="col-sm-8 control-label"></label>
+
+								<button class="btn btn-default" ng-disabled="error || incomplete" data-dismiss="modal">
+									<span class="glyphicon glyphicon-remove"></span>取消
+								</button>
+								<button class="btn btn-success" ng-disabled="error || incomplete" ng-click="createConfirm()" submit-button>
+									<span class="glyphicon glyphicon-ok"></span>提交
+								</button>
+							</div>
+						</div>
+					</div><!-- /.modal-content -->
+				</div><!-- /.modal -->
+			</div>
+
+			<!-- 详情 -->
+			<div class="modal fade" id="myInfoModal" data-backdrop="static" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+							<h4 class="modal-title" id="myModalLabel">编辑数据源</h4>
+						</div>
+						<div class="modal-body">
+							<form class="form-horizontal">
+								<div class="form-group">
+									<label class="col-sm-3 control-label">数据源名称:</label>
+									<div class="col-sm-8">
+										<input type="text" ng-model="selectedUser.name" class="form-control">
+									</div>
+								</div> 
+
+								<div class="form-group">
+									<label class="col-sm-3 control-label">IP:</label>
+									<div class="col-sm-8">
+										<input type="text" ng-model="selectedUser.source_ip"  class="form-control">
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-sm-3 control-label">用户名:</label>
+									<div class="col-sm-8">
+										<input type="text" ng-model="selectedUser.source_name"  class="form-control">
+									</div>
+								</div> 
+								<div class="form-group">
+									<label class="col-sm-3 control-label">密码:</label>
+									<div class="col-sm-8">
+										<input type="password" ng-model="selectedUser.source_password"  class="form-control">
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-sm-3 control-label">数据目录:</label>
+									<div class="col-sm-8">
+										<input type="text" ng-model="selectedUser.source_location" class="form-control">
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-sm-3 control-label">创建人:</label>
+									<div class="col-sm-8">
+										<input type="text" ng-model="selectedUser.user_name"  class="form-control" ng-disabled="true">
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-sm-3 control-label">创建时间:</label>
+									<div class="col-sm-8">
+										<input type="text" ng-model="selectedUser.create_date"  class="form-control" ng-disabled="true">
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-sm-3 control-label">描述:</label>
+									<div class="col-sm-8">
+										<textarea rows="3" cols="40" ng-model="selectedUser.description" class="form-control"></textarea>
+									</div>
+								</div>
+
+							</form>
+							<div class="validatederror has-error text-center">
+								<span class="help-block" ng-show=errorMsg>{{errorMsg}}</span>
+							</div>
+						</div>
+						<div class="modal-footer">
+							<div class="form-group">
+								<label class="col-sm-8 control-label"></label>
+
+								<button class="btn btn-default" ng-disabled="error || incomplete" ng-click="updateCancel()">
+									<span class="glyphicon glyphicon-hand-left"></span>返回
+								</button>
+								<button class="btn btn-success" ng-disabled="error || incomplete" ng-click="updateConfirm()" submit-button>
+									<span class="glyphicon glyphicon-ok"></span>保存
+								</button>
+							</div>
+						</div>
+					</div><!-- /.modal-content -->
+				</div><!-- /.modal -->
+			</div>
+
+			<!-- 删除 -->
+			<div class="modal fade" id="myDeleteModal" data-backdrop="static" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+							<h4 class="modal-title" id="myModalLabel">删除数据源</h4>
+						</div>
+						<div class="modal-body">
+							<span>&nbsp;&nbsp;确定要删除数据源【 {{selectedUser.name}} 】吗？</span>
+						</div>
+						<div class="modal-footer">
+							<label class="col-sm-8 control-label"></label>
+							<button class="btn btn-default" ng-disabled="error || incomplete" data-dismiss="modal">
+								<span class="glyphicon glyphicon-remove"></span>取消
+							</button>
+							<button class="btn btn-success" ng-disabled="error || incomplete" ng-click="deleteConfirm()" submit-button>
+								<span class="glyphicon glyphicon-ok"></span>确定
+							</button>
+						</div>
+					</div><!-- /.modal-content -->
+				</div><!-- /.modal -->
+			</div>
+		</div>
+	</div>
+</div>
+

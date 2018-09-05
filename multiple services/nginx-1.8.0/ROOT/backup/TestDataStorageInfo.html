@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<script src="https://cdn.bootcss.com/angular.js/1.6.3/angular.min.js"></script>
+	<script src="https://cdn.bootcss.com/angular.js/1.6.3/angular-resource.js"></script>
+</head>
+<body>
+
+	<div ng-app="myApp" ng-controller="testCtrl">
+	</div>
+
+	<script>
+		var app = angular.module('myApp', ['ngResource']);
+		app.controller('testCtrl', function($scope, $resource) {
+			var url = 'http://172.16.206.69:8088';
+			var myUser = $resource("/rest/datastorageinfo/:id", {id: '@id'}, {});
+
+			//get
+			myUser.query({}, function (resp) {
+				console.log(resp);
+			}, function (err) {
+				console.log(err);
+			});
+			
+			//get by parent
+			myUser.query({id: "10"}, function (resp) {
+				console.log(resp);
+			}, function (err) {
+				console.log(err);
+			});
+
+
+			//insert
+			myUser.save({id:'create'}, {storage_location: "savename1"}, function (resp) {
+				console.log(resp);
+			}, function (err) {
+
+			});
+			
+			//update
+// 			myUser.save({id:'update'}, {id: 1,name: "updatename2"}, function (resp) {
+// 				console.log(resp);
+// 			}, function (err) {
+
+// 			});
+
+// 			//delete
+// 			myUser.remove({id: "2"}, {}, function (resp) {
+// 				console.log(resp);
+// 			}, function (err) {
+
+// 			});
+
+
+		});
+	</script>
+
+</body>
+</html>

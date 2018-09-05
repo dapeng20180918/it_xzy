@@ -1,0 +1,66 @@
+<div class="col-sm-9 col-md-9 col-lg-10 mainright">
+	<ul class="breadcrumb" contenteditable="false">
+		<li><a href="">智能运控管理 </a><span class="divider"></span></li>
+		<li class="active">大数据分析平台管控</li>
+	</ul>
+
+	<!-- mainr1 -->
+	<div class="col-md-12 col-lg-12 mainright">
+		<div class="mainr1 " style="padding-top:10px">
+			<div class="tabbable" id="tabs-596871">
+				<ul class="nav nav-tabs">
+					<li class="active">
+						<a href="" ng-click="setPanel('panel-1')" data-toggle="tab">平台配置</a>
+					</li>
+					<li>
+						<a href="" ng-click="setPanel('panel-2')" data-toggle="tab">计算资源</a>
+					</li>
+				</ul>
+				<div class="tab-content" style="padding-top:20px">
+					<div class="tab-pane active" id="panel-1">
+						<form class="form-horizontal">
+							<div class="form-group">
+								<label class="control-label col-sm-2">平台地址(IP:端口):</label> 
+								<input type="text" ng-model="selectedUser.addr" class="inputborder">
+							</div>
+							<div class="form-group">
+								<label class="control-label col-sm-2">用户名:</label> <input type="text"
+								ng-model="selectedUser.name" class="inputborder">
+							</div>
+							<div class="form-group">
+								<label class="control-label col-sm-2">密码:</label> <input type="password"
+								ng-model="selectedUser.password" class="inputborder">
+							</div>
+							<div class="form-group">
+								<label class="control-label col-sm-2">平台超时(ms):</label> 
+								<input type="text" ng-model="selectedUser.timeout" 
+								class="inputborder">
+							</div>
+
+							<div class="form-group">
+								<label class="control-label col-sm-2">平台根目录:</label> <input type="text"
+								ng-model="selectedUser.rootPath" class="inputborder">
+							</div>
+
+							<div class="controls">
+								<label class="control-label col-sm-3"></label>
+								<button class="btn btn-success btn-sm" ng-click="updateConfirm()" submit-button>保存</button>
+							</div>
+						</form>
+					</div>
+					<div class="tab-pane " id="panel-2">
+						<h5>共计{{hostArray.length}}个计算节点:</h5>
+						<div class="mainr1-z">
+							<ul ng-repeat="host in hostArray" >
+								<li>
+									<img src="/images/host.png"/> <span style="font-size:16px"> {{host.name}}</span>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</div>

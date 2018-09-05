@@ -1,0 +1,171 @@
+@charset "utf-8";
+/* CSS Document */
+html, body { height:100%}
+.bodymain{ height:100%；}
+body { background:#f5f5f5;}
+
+.login {width: 680px; height: 325px; margin:150px auto 0; background-color: #fff;}
+.login_logo{ font-size: 22px; color: #0068b7; font-weight: bold; padding:  30px 0 15px 210px; background: url(../images/logo.png) no-repeat 20px 20px;}
+.login .control-group .control-label {width: 60px;  display:inline-block; text-align: right; margin: 20px 0 0 30px;}
+.login .ng-binding {padding-left: 110px;}
+.login .control-group .controls { display:inline-block; magin: 50px 0 0 30px!important;}
+.login .control-group fieldset { magin: 10px 0 0 30px!important;}
+.navbar{
+background: #0068b7;
+margin-bottom: 0 !important;
+position: absolute;
+top: 0;
+height: 99px;
+width: 100%;
+}
+.navbar-brand { 
+	width: 670px; 
+	height: 97px; 
+	background-image: url(../images/logo.jpg); 
+	color: #ffffff!important; 
+	padding: 40px 35px 35px 225px; 
+	font-family: Noto Sans S Chinese Medium;
+	font-size: 22px;
+}
+
+.navbar-brand a{ }
+.navbar-right .dropdown-menu {right: 28px!important;}
+.dropdown-menu {min-width: inherit;}
+.navbar-nav > li > a { height: 48px; line-height: 48px; border-radius: 5px; margin: 28px 28px 0 0; padding-top: 0!important; padding-bottom: 0!important; color: #ffffff!important;}
+.navbar-default .navbar-brand:hover, .navbar-default .navbar-brand:focus{ color: #fff!important;}
+.navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus { background: #0b3f96!important;}
+
+.container-fluid { padding: 0!important; }
+.mainrow {
+margin: 0;
+position: absolute;
+top: 100px;
+bottom: 0px;
+width: 100%;
+height: auto;
+overflow: auto;
+	background: #fff;
+}
+.cfix {
+	width: 100%;
+	height: 100%;
+	clear: both;
+}
+.sidebar { 
+	background: #d1e5ff; 
+	border-right:  solid 1px #54a5e2; 
+	height: 100%;
+    min-height: 200px;
+    height: 99.5%;
+    overflow: auto;
+	padding: 30px 0 50px;
+}
+
+.main .main_wrapper .mleft {
+	overflow: hidden;
+	width: auto;
+}
+.main .main_wrapper .mw-position {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+}
+.sidebar ul {color: #0068b7;}
+.sidebar ul li{ list-style:none; line-height: 30px; }
+.sidebar ul li span.float {display: block; float: left; width: 26px; height: 24px;}
+.sidebar ul li span.icon-resource { background: url(../images/icons.png) -21px -22px;}
+.sidebar ul li span.icon-analysis { background: url(../images/icons.png) -64px -22px;}
+.sidebar ul li span.icon-control { background: url(../images/icons.png) -126px -22px;}
+.sidebar ul li span.icon-service { background: url(../images/icons.png) -171px -22px;}
+.sidebar ul li span.icon-go { background: url(../images/go.png)}
+.sidebar ul li span.icon-portal{ background: url(../images/icons.png) -230px -65px;}
+.sidebar ul li span.icon-data{ background: url(../images/icons.png) -265px -68px;}
+.nav ul li span.icon-user { background: url(../images/icons.png) -227px -22px;}
+.sidebar ul li a:hover { background: #fff; display: block; padding: 0 0 0 10px; padding-right: 3px;}
+
+ul.padding20 { padding-left: 0px!important; margin: 0 0 0 20px;}
+
+.mainright { padding: 0; }
+.mainright ul.breadcrumb { margin-bottom: 0!important;}
+.mainright .page1 h2 { margin:  15px 0; font-size: 18px;}
+.mainr1 .formblack { background: linear-gradient(#f7f8fb,#f0f4f9); border: solid 1px #e2eaf1; padding: 20px 25px;}
+.mainr1 { padding: 0 20px;}
+.mainr1-z{ position: fixed; bottom: 0; right:30px; left: 340px; top:280px; overflow-y: auto; overflow-x: hidden; }
+.mainr1-z-1{ position: fixed; bottom: 0; right:30px; left: 340px; top:300px; overflow-y: auto; overflow-x: hidden; }
+.mainr1 .formblack .control-group { float: left; margin-right: 20px;}
+.mainr1 .formblack .control-group .control-label { float:left; padding-right: 6px;}
+.mainr1 .formblack .control-group .controls { float:left; }
+.mainr1 .formblack .control-group button { margin-top:30px;}
+.mainr1 .page-header { margin: 20px 0 20px; border:none;}
+.mainr1 .page-header h4 span,.mainr2 .main2 .page-header h4 span {border-bottom: solid 3px #2090ff; padding: 0 8px 19px; color: #0068b7;}
+.mainr1 .table{ /*border: solid 1px #d1e5ff;*/ margin: 20px 0 10px 0;}
+.mainr1 .table tr th, .main2 .table tr th{ border-right: solid 1px #dee7ef; background: #eef5f8; font-weight: normal; color: #135cc8;}
+.mainr1 .table tr td, .main2 .table tr td{ border-right: solid 1px #dee7ef;}
+.mainr1 .line { border-top: solid 1px #dbe3ed; padding-top: 10px; margin-top:15px;}
+.mainr1 .page { background: #eef5f8; border: solid 1px #d1e5ff; padding: 5px; }
+.mainr1 .page ul {margin: 0; padding: 0 6px; font-size: 12px; color: #595959;}
+.mainr1 .page ul li {list-style: none;}
+.mainr1 .page ul li button { float:left; width: 25px; height: 25px; line-height: 25px; border: 0;}
+.mainr1 .page ul li button.f_page { background: url(../images/icons.png) -20px -65px;}
+.mainr1 .page ul li button.Pre_page { background: url(../images/icons.png) -45px -65px;}
+.mainr1 .page ul li button.next_page { background: url(../images/icons.png) -74px -65px;}
+.mainr1 .page ul li button.l_page {  background: url(../images/icons.png) -100px -65px;}
+.mainr1 .page ul li button.refresh {  background: url(../images/icons.png) -130px -65px; width: 33px!important;}
+.mainr1 .formblack input[type="file"] {display: inline-block!important;}
+.mainr1 .form-horizontal .form-group { margin-left: 0; margin-top: 10px;}
+.mainright ul.breadcrumb { margin-bottom: 0!important;}
+.mainr1 h5{padding: 8px; background: #eef5f8; color: #135cc8;}
+.mainr1 table.table_d {border: solid 1px #dee7ef; }
+.mainr1 table.table_d td{ border-right: solid 1px #dee7ef;  border-bottom: solid 1px #dee7ef; padding: 5px;}
+.mainr1 table.table_d .tdbg{ background: #f7fbfc; }
+.mainr1 .f-control  table tr { padding-top: 10px; display: block;}
+.mainr1 .f-control  table td { padding: 20 0 0 0; display: inline-block;}
+.mainr1 .f-control  table td.title { width: 260px; text-align:  right; padding: 0 15px;}
+
+.mainr2 { 
+position: absolute;
+bottom: 0;
+top: 36px;
+height: 90%;
+}
+.mainr2 .sidebar2{ position: fixed;bottom: 0; top: 135px; border-right: solid 1px #e2eaf1; padding: 20px; min-width: 300px;min-height:600px; overflow: auto;}
+.mainr2 .sidebar2 ul li { list-style: none; line-height: 30px;}
+.mainr2 .main2 { margin-left: 340px;}
+.mainr2 .main2 table { border: solid 1px #d1e5ff;}
+.mainr2 .sidebar2 ul li span.icon_j{ background: url(../images/icons.png) -172px -65px; width: 25px; height: 23px; display: inline-block;}
+.mainr2 .sidebar2 ul li span.icon_add{ background: url(../images/icons.png) -200px -65px; width: 25px; height: 23px; display: inline-block;}
+.glyphicon-share {font-size: 18px;}
+
+.form-group .control-label { font-weight:normal;}
+
+.mainright {}
+.table  { background: #fff;}
+.table .mr_input{ width:  60px;}
+.mainright h4 span{border-bottom: solid 3px #2090ff; padding: 0 8px 19px; color: #0068b7;}
+.mainright h4 {border-bottom: solid 1px #ddd; padding: 0 8px 20px; }
+.mainright .modal-content h4 { color:#fff; border-bottom: none!important; padding: 0;}
+.mainright P { padding: 20px;}
+.inputborder { border: solid 1px #ccc; border-radius: 3px; padding: 6px 12px; }
+.modal-header {border:none!important; background: #0068b7;}
+.modal-footer { padding: 15px 15px 15px 40px!important; text-align: left!important;}
+.modal-body {min-height:120px;}
+.f-search {width: 240px; float: right; }
+.mainr1 dl.datacustom_city { background: #eee; display: block; margin: 0;}
+.mainr1 dl.datacustom_city dd { float:left; margin-right: 13px; }
+.mainr1 dl.datacustom_city dd a{  padding: 10px 20px;  display: block;}
+.mainr1 dl.datacustom_city dd a:hover { background: #4cae4c; color: #fff; text-decoration: none;padding: 10px 20px;}
+.mainr1 .t-right{ float:right; font-size: 14px; color:#9B9A9A; padding: 8px 0 0 0; display: inline-block; }
+.mainr1 .t-right label {font-weight: normal;}
+.mainr1 .place{ float: left;width: 200px; font-weight: normal;}
+.mainr1 .choosetwo-cont { border: solid 1px #eee; background: #f9fafb; padding: 20px;}
+.mainr1 .choosetwo-cont-2 { border: solid 1px #eee; background: #f9fafb; padding: 2px;}
+.mainr1 .choosetwo-cont label { padding-left: 5px; font-weight: normal;}
+.mainr1 .t-btn { margin: 50px 0 0 500px;}
+.mainr1 .t-margin { margin-bottom:  40px;}
+.mainr1 .text_padding{padding-top: 7px;}
+.mainr1 h4.datacustom_h { padding: 10px 0 0 10px; 0!important; color: #333;}
+
+.errstr {color:red;}
+
+
+

@@ -1,0 +1,62 @@
+<div class="bodymain">
+	<nav class="navbar navbar-default">
+		<div class="container-fluid"> 
+			<!-- Brand and toggle get grouped for better mobile display -->
+			<div class="navbar-header">
+				<a class="navbar-brand" >门户平台</a>
+			</div>
+
+			<!-- Collect the nav links, forms, and other content for toggling -->
+			<div class="collapse navbar-collapse" id="defaultNavbar1">
+				<ul class="nav navbar-nav navbar-right">
+					<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span class="icon-user float"></span>{{username}}<span class="caret"></span></a>
+						<ul class="dropdown-menu" role="menu">
+							<li><a data-toggle="modal" data-target="#myHelp" >关于</a></li> 
+							<li><a ng-click="signout()" >退出</a></li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+
+			<div class="modal fade" id="myHelp" data-backdrop="static" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+							<h4 class="modal-title" id="myModalLabel">关于</h4>
+						</div>
+						<div class="modal-body">
+							<form class="form-horizontal" style="font-size:16px;font-weight:bold">
+								<div class="form-group">
+									<label class="col-sm-3 control-label">服务:</label>
+									<div class="col-sm-9" style="padding-top: 7px">
+										<span>东华软件门户平台</span>
+									</div>
+								</div> 
+								<div class="form-group">
+									<label class="col-sm-3 control-label">版本:</label>
+									<div class="col-sm-9" style="padding-top: 7px">
+										<span>1.0.1</span>
+									</div>
+								</div> 
+								<div class="form-group">
+									<label class="col-sm-3 control-label">发布日期:</label>
+									<div class="col-sm-9" style="padding-top: 7px">
+										<span>2018-10-1</span>
+									</div>
+								</div> 
+							</form>
+						</div>
+						<div class="modal-footer">
+							<label class="col-sm-5 control-label"></label>
+							<button class="btn btn-default" data-dismiss="modal">
+							<span class="glyphicon glyphicon-hand-left"></span>返回</button>
+						</div>
+					</div><!-- /.modal-content -->
+				</div><!-- /.modal -->
+			</div>
+
+		</div>
+	</nav>
+</div>
+

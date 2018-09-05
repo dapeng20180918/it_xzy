@@ -1,0 +1,40 @@
+
+<div class="login" >
+    <table width="100%" border="0">
+  <tbody>
+    <tr>
+      <td><img src="images/tu2.jpg" width="252" height="325" alt=""/></td>
+      <td><form class="form-horizontal">
+        <fieldset >
+            <div class="login_logo"> 气象服务平台</div>
+            <div class="form-group" style="padding-top:30px">
+                <label class="control-label col-sm-3 " style="font-size:16px">用户名：</label>
+                <div class="controls col-sm-6">
+                    <input class="form-control" type="text" ng-model="user.name">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-sm-3" style="font-size:16px">密码：</label>
+                <div class="controls col-sm-6">
+                    <input class="form-control" type="password" ng-model="user.password">
+                </div>
+            </div>
+            <div class="validatederror has-error" style="height: 40px; line-height: 20px;">
+                <span class="help-block" ng-show=signinResult >{{signinResult}}</span>
+            </div>
+
+            <div class="form-group" >
+                <label class="col-sm-5 control-label"></label>
+                <!-- Button -->
+                <div class="controls">
+                    <button class="btn btn-primary btn-lg" type="submit" ng-click="signin()" style="padding: 10px 32px" submit-button>登录</button>
+                </div>
+            </div>
+
+        </fieldset>
+    </form></td>
+    </tr>
+  </tbody>
+</table>
+</div>

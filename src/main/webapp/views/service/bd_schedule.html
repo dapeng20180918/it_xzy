@@ -1,0 +1,264 @@
+<div class="col-sm-9 col-md-9 col-lg-10 mainright">
+	<ul class="breadcrumb" contenteditable="false">
+		<li><a href="">并行分析与数据挖掘 </a><span class="divider"></span></li>
+		<li class="active">并行调度</li>
+	</ul>
+	
+	<!-- mainr1 -->
+	<div class="mainr1">
+		<div class="page-header">
+			<div class="btn-group" >
+				<button type="button" class="btn btn-default" data-toggle="modal" data-target="#myInfoModal" ng-disabled="!ifSelectedUser">
+					<span class="glyphicon glyphicon-info-sign"></span>详情
+				</button>
+				<button type="button" class="btn btn-default" data-toggle="modal" data-target="#myDeleteModal" ng-disabled="!(ifSelectedUser && ifFinishedTask)">
+					<span class="glyphicon glyphicon-filter"></span>结果
+				</button>
+			</div>
+		</div>
+
+		<div class="col-lg-12 mainright">
+			<!-- 列表查看 -->
+			<div class="col-lg-12">
+				<h4>
+					<span>并行调度任务</span>
+					<form class="form-search form-inline f-search" >
+						<input class="input-medium search-query form-control" type="text" 
+						ng-model="searchKey" placeholder="输入搜索关键字">
+					</form>
+				</h4>
+				<div>
+					<div class="mainr1-z">
+						<table class="table">
+							<thead>
+								<tr>
+									<th class="mr_input">选择</th>
+									<th>任务名称</th>
+									<th>任务类型</th>
+									<th>任务状态</th>
+									<th>创建人</th>
+									<th>开始时间</th>
+									<th>结束时间</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr ng-repeat="user in users | filter : searchKey" value={{user.id}} >
+									<td class="mr_input"><input type="radio" name="myRadio" value={{user.id}} ng-click=clickRadio(user)></td>
+									<td>{{user.name}}</td>
+									<td>{{user.task_type}}</td>
+									<td>{{taskStatusMap[user.status]}}</td>
+									<td>{{user.user_name}}</td>
+									<td>{{user.create_date}}</td>
+									<td>{{user.finish_date}}</td>
+								</tr>
+							</tbody>
+							<tfoot>
+								<tr class="active">
+									<td colspan="10" class="text-right">
+										共计{{(users| filter : searchKey).length}}条记录
+									</td>
+								</tr>
+							</tfoot>
+						</table>
+					</div>
+				</div>
+			</div>
+
+			<!-- 详情 -->
+			<div class="modal fade" id="myInfoModal" data-backdrop="static" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+							<h4 class="modal-title" id="myModalLabel">详情</h4>
+						</div>
+						<div class="tabbable modal-body" id="tabs-905903">
+							<ul class="nav nav-tabs">
+								<li class="active">
+									<a href="" ng-click="setInfoPanel('panel-3')" data-toggle="tab">并行调度</a>
+								</li>
+								<li>
+									<a href="" ng-click="setInfoPanel('panel-1')" data-toggle="tab">基本设置</a>
+								</li>
+								<li>
+									<a href="" ng-click="setInfoPanel('panel-2')" data-toggle="tab">高级设置</a>
+								</li>
+							</ul>
+							<div class="tab-content" style="padding-top: 10px">
+								<div class="tab-pane active" type="info" id="panel-3">
+									<div treecontrol class="tree-custom"
+										tree-model="treeData" options="treeOptions"
+										on-selection="showSelected(node)" expanded-nodes="expandedNodes" 
+										filter-comparator="false" selected-node="selectedNode">
+										<span ng-show="!node.threads"> <img src="/images/th.png" style="width:20px;height:20px;"/> DefaultClass.{{node.id}}</span>
+										<span ng-show="node.threads" style="font-size:18px;"> &nbsp;{{hostMap[node.id]}} <span style="color: red">({{node.threads.length}})</span></span>
+									</div>
+								</div>
+								<div class="tab-pane" type="info" id="panel-1">
+									<form class="form-horizontal">
+										<div class="form-group">
+											<label class="col-sm-3 control-label">任务名称:</label>
+											<div class="col-sm-8">
+												<input type="text" ng-model="selectedUser.name" class="form-control" ng-disabled=true>
+											</div>
+										</div>
+										<div class="form-group">
+											<label class="col-sm-3 control-label">任务状态:</label>
+											
+											<div class="col-sm-8">
+												<select ng-model="selectedUser.status" class="form-control"
+										ng-options="x.value as x.key for x in taskStatusArray" ng-disabled=true>
+												</select>
+											</div>
+										</div> 
+										<div class="form-group">
+											<label class="col-sm-3 control-label">任务类型:</label>
+											<div class="col-sm-8">
+												<input type="text" ng-model="selectedUser.task_type" class="form-control" ng-disabled=true>
+											</div>
+										</div>
+										<div class="form-group">
+											<label class="col-sm-3 control-label">算法名称:</label>
+											<div class="col-sm-8">
+												<select ng-model="selectedUser.strategy_id" class="form-control" ng-disabled=true
+												ng-options="x.id as x.name for x in strategyArray"></select>
+											</div>
+										</div> 
+										<div class="form-group">
+											<label class="col-sm-3 control-label">算法参数:</label>
+											<div class="col-sm-8">
+												<textarea rows="3" cols="40" ng-model="selectedUser.strategy_param" class="form-control" ng-disabled=true></textarea>
+											</div>
+										</div>
+										<div class="form-group">
+											<label class="col-sm-3 control-label">创建人:</label>
+											<div class="col-sm-8">
+												<input type="text" ng-model="selectedUser.user_name" class="form-control" ng-disabled=true>
+											</div>
+										</div>
+										<div class="form-group">
+											<label class="col-sm-3 control-label">开始时间:</label>
+											<div class="col-sm-8">
+												<input type="text" ng-model="selectedUser.create_date" class="form-control" ng-disabled=true>
+											</div>
+										</div>
+										<div class="form-group">
+											<label class="col-sm-3 control-label">结束时间:</label>
+											<div class="col-sm-8">
+												<input type="text" ng-model="selectedUser.finish_date" class="form-control" ng-disabled=true>
+											</div>
+										</div> 
+
+										<div class="form-group">
+											<label class="col-sm-3 control-label">描述:</label>
+											<div class="col-sm-8">
+												<textarea rows="3" cols="40" ng-model="selectedUser.description" class="form-control" ng-disabled=true></textarea>
+											</div>
+										</div>
+									</form>
+								</div>
+								<div class="tab-pane" type="info" id="panel-2">
+									<form class="form-horizontal">
+										<div class="form-group">
+											<label class="col-sm-5 control-label">最大线程数量:</label>
+											<div class="col-sm-6">
+												<input type="text" ng-model="selectedUser.thread_max_cnt"  class="form-control" ng-disabled=true>
+											</div>
+										</div>
+										<div class="form-group">
+											<label class="col-sm-5 control-label">最大JVM数量:</label>
+											<div class="col-sm-6">
+												<input type="text" ng-model="selectedUser.host_max_cnt" class="form-control" ng-disabled=true>
+											</div>
+										</div> 
+										<div class="form-group">
+											<label class="col-sm-5 control-label">每次获取数据量:</label>
+											<div class="col-sm-6">
+												<input type="text" ng-model="selectedUser.data_get" class="form-control" ng-disabled=true>	
+											</div>
+										</div>
+										<div class="form-group">
+											<label class="col-sm-5 control-label">每次执行数据量:</label>
+											<div class="col-sm-6">
+												<input type="text" ng-model="selectedUser.data_excute" class="form-control" ng-disabled=true>
+											</div>
+										</div> 
+
+										<div class="form-group">
+											<label class="col-sm-5 control-label">没有数据休眠时间(秒):</label>
+											<div class="col-sm-6">
+												<input type="text" ng-model="selectedUser.no_data_sleep" class="form-control" ng-disabled=true>
+											</div>
+										</div>
+
+										<div class="form-group">
+											<label class="col-sm-5 control-label">每次处理完数据休眠时间(秒):</label>
+											<div class="col-sm-6">
+												<input type="text" ng-model="selectedUser.one_data_sleep" class="form-control" ng-disabled=true>
+											</div>
+										</div>
+									</form>
+								</div>
+							</div>
+						</div>
+
+						<div class="modal-footer">
+							<div class="form-group">
+								<label class="col-sm-5 control-label"></label>
+								<button class="btn btn-default" ng-disabled="error || incomplete" data-dismiss="modal">
+									<span class="glyphicon glyphicon-hand-left"></span>返回
+								</button>
+							</div>
+						</div>
+					</div><!-- /.modal-content -->
+				</div><!-- /.modal -->
+			</div>
+
+			<!-- 分析结果-->
+			<div class="modal fade" id="myDeleteModal" data-backdrop="static" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+							<h4 class="modal-title" id="myModalLabel">结果</h4>
+						</div>
+						<div class="modal-body">
+							<!-- picture -->
+							<div ng-show="selectedUser.task_type=='数据分析'">
+								<img src={{resultPicture}}>
+							</div>
+							<!-- file -->
+							<div ng-show="selectedUser.task_type=='数据加工'">
+								<dl style="padding:10px 0 0 30px;">
+									<dt><span style="font-size:20px">　数据存储位置：</span></dt><br/>
+									<div style="font-size:16px">
+										<dd style="padding-left: 120px;">
+											<img src="/images/folder.png"/> 其他</dd>
+											<dd style="padding-left: 140px;">
+												<img src="/images/db.png"/> 数据加工</dd>
+												<dd style="padding-left: 160px;">
+													<img src="/images/file.png"/> {{selectedUser.result_path}}</dd>
+									</div>
+								</dl>
+							</div>
+						</div>
+						<div class="modal-footer">
+							<label class="col-sm-5 control-label"></label>
+							<button class="btn btn-default" data-dismiss="modal">
+								<span class="glyphicon glyphicon-hand-left"></span>返回
+							</button>
+						</div>
+					</div><!-- /.modal-content -->
+				</div><!-- /.modal -->
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+
+
+

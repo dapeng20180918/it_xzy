@@ -1,0 +1,224 @@
+<div class="col-sm-9 col-md-9 col-lg-10 mainright">
+	<ul class="breadcrumb" contenteditable="true">
+		<li><a href="">统一自助服务门户</a><span class="divider"></span></li>
+		<li class="active">用户管理</li>
+	</ul>
+	<!-- mainr1 -->
+	<div class="mainr1">
+		<div class="page-header">
+
+			<div class="btn-group" >
+				<button type="button" class="btn btn-default" data-toggle="modal" data-target="#myCreateModal">
+					<span class="glyphicon glyphicon-plus-sign"></span>添加
+				</button>
+				<button type="button" class="btn btn-default" data-toggle="modal" data-target="#myInfoModal" ng-disabled="!ifSelectedUser">
+					<span class="glyphicon glyphicon-info-sign"></span>详情
+				</button>
+				<button type="button" class="btn btn-default" data-toggle="modal" data-target="#myDeleteModal" ng-disabled="!ifSelectedUser">
+					<span class="glyphicon glyphicon-remove"></span>删除
+				</button>
+			</div>
+		</div>
+
+		<!-- 列表查看 -->
+		<div class="col-sm-9 col-md-9 col-lg-12 mainright">
+			<div class="col-lg-12">
+				<h4><span>用户列表</span></h4>
+				<table class="table">
+					<thead>
+						<tr>
+							<th class="mr_input">选择</th>
+							<th>名称</th>
+							<th>角色</th>
+							<th>状态</th>
+							<th>创建日期</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr ng-repeat="user in users">
+							<td class="mr_input"><input type="radio" name="myRadio" value={{user.id}} ng-click=clickRadio(user)></td>
+							<td>{{user.name}}</td>
+							<td>{{getRoleNameString(user.role_id)}}</td>
+							<td>{{getStatusString(user.status)}}</td>
+							<td>{{user.create_date | date : 'yyyy-MM-dd'}}</td>
+						</tr>
+					</tbody>
+					<tfoot>
+						<tr class="active">
+							<td  colspan="10" class="text-right">
+								共计{{users.length}}条记录
+							</td>
+						</tr>
+					</tfoot>
+				</table>
+			</div>
+		</div>
+		
+		<!-- 添加 -->
+		<div class="modal fade" id="myCreateModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+						<h4 class="modal-title" id="myModalLabel">创建新用户</h4>
+					</div>
+					<div class="modal-body">
+						<form class="form-horizontal">
+							<div class="form-group">
+								<label class="col-sm-2 control-label">用户名:</label>
+								<div class="col-sm-10">
+									<input type="text" ng-model="createUser.name" placeholder="用户名" class="inputborder">
+								</div>
+							</div> 
+							<div class="form-group">
+								<label class="col-sm-2 control-label">角色:</label>
+								<div class="col-sm-10">
+									<select ng-model="createUser.role_id" class="inputborder"
+									ng-options="x.value as x.key for x in roleArray"></select>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-2 control-label">密码:</label>
+								<div class="col-sm-10">
+									<input type="password" ng-model="createUser.password" placeholder="密码" class="inputborder">
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-2 control-label">重复密码:</label>
+								<div class="col-sm-10">
+									<input type="password" ng-model="createUser.passwordConfirm" placeholder="重复密码" class="inputborder">
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-2 control-label">电话:</label>
+								<div class="col-sm-10">
+									<input type="text" ng-model="createUser.telephone_number" placeholder="电话" class="inputborder">
+								</div>
+							</div> 
+							<div class="form-group">
+								<label class="col-sm-2 control-label">描述:</label>
+								<div class="col-sm-10">
+									<textarea rows="5" cols="40" ng-model="createUser.desc" placeholder="描述" class="inputborder"></textarea>
+								</div>
+							</div>
+						</form>	
+
+					</div>
+					<div class="modal-footer">
+				<div class="form-group">
+					<label class="col-sm-2 control-label"></label>
+
+					<button class="btn btn-default" ng-disabled="error || incomplete" data-dismiss="modal">
+						<span class="glyphicon glyphicon-remove"></span>取消
+					</button>
+					<button class="btn btn-success" ng-disabled="error || incomplete" ng-click="createConfirm()">
+						<span class="glyphicon glyphicon-ok"></span>提交
+					</button>
+				</div>
+					</div>
+				</div><!-- /.modal-content -->
+			</div><!-- /.modal -->
+		</div>
+
+		<!-- 详情 -->
+		<div class="modal fade" id="myInfoModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+						<h4 class="modal-title" id="myModalLabel">角色详情</h4>
+					</div>
+					<div class="modal-body">
+						<form class="form-horizontal">
+							<div class="form-group">
+								<label class="col-sm-2 control-label">用户名:</label>
+								<div class="col-sm-10">
+									<input type="text" ng-model="selectedUser.name" ng-disabled="true" class="inputborder">
+								</div>
+							</div> 
+							<div class="form-group">
+								<label class="col-sm-2 control-label">角色:</label>
+								<div class="col-sm-10">
+									<select ng-model="selectedUser.role_id" class="inputborder"
+									ng-options="x.value as x.key for x in roleArray"></select>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-2 control-label">状态:</label>
+								<div class="col-sm-10">
+									<select ng-model="selectedUser.status" class="inputborder"
+									ng-options="x.value as x.key for x in statusArray"></select>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-2 control-label">创建时间:</label>
+								<div class="col-sm-10">
+									<input type="text" ng-model="selectedUser._create_date" ng-disabled="true" class="inputborder" >
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-2 control-label">电话:</label>
+								<div class="col-sm-10">
+									<input type="text" ng-model="selectedUser.telephone_number" placeholder="电话" class="inputborder">
+								</div>
+							</div> 
+							<div class="form-group">
+								<label class="col-sm-2 control-label">描述:</label>
+								<div class="col-sm-10">
+									<textarea rows="5" cols="40" ng-model="selectedUser.desc" placeholder="描述" class="inputborder"></textarea>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-2 control-label">密码:</label>
+								<div class="col-sm-10">
+									<input type="password" ng-model="selectedUser.passowrd" placeholder="密码" class="inputborder">
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-2 control-label">重复密码:</label>
+								<div class="col-sm-10">
+									<input type="password" ng-model="selectedUser.passowrdConfirm" placeholder="重复密码" class="inputborder">
+								</div>
+							</div>
+
+						</form>
+					</div>
+					<div class="modal-footer">
+						<div class="form-group">
+							<label class="col-sm-2 control-label"></label>
+
+							<button class="btn btn-success" ng-disabled="error || incomplete" data-dismiss="modal"">
+								<span class="glyphicon glyphicon-hand-left"></span>返回
+							</button>
+							<button class="btn btn-success" ng-disabled="error || incomplete" ng-click="updateConfirm()">
+								<span class="glyphicon glyphicon-ok"></span>保存
+							</button>
+						</div>
+					</div>
+				</div><!-- /.modal-content -->
+			</div><!-- /.modal -->
+		</div>
+
+		<!-- 删除 -->
+		<div class="modal fade" id="myDeleteModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+						<h4 class="modal-title" id="myModalLabel">删除用户</h4>
+					</div>
+					<div class="modal-body">确定要删除用户【 {{selectedUser.name}} 】吗？</div>
+					<div class="modal-footer">
+						<button class="btn btn-default" ng-disabled="error || incomplete" data-dismiss="modal">
+							<span class="glyphicon glyphicon-remove"></span>取消
+						</button>
+						<button class="btn btn-success" ng-disabled="error || incomplete" ng-click="deleteConfirm()">
+							<span class="glyphicon glyphicon-ok"></span>确定
+						</button>
+					</div>
+				</div><!-- /.modal-content -->
+			</div><!-- /.modal -->
+		</div>
+		
+	</div>
+</div>
