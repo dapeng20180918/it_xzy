@@ -86,6 +86,10 @@ set names utf8;
 --edit   include     /usr/local/openresty/nginx/conf/mime.types;
 #/usr/local/openresty/nginx/sbin/nginx -p /usr/local/openresty/nginx -c /opt/project/nginx.conf
 
-
+#############################################################################################
+需要手动修改的数据
+#############################################################################################
+1 数据存储中的数据 表名:data_storage_info
+2 管理服务的更新时间 表名:data_collect_schedule 字段:update_time
 
 
