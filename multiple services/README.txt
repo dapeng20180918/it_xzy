@@ -73,7 +73,7 @@ set names utf8;
 [java]
 #tar zxvf jdk-8u171-linux-x64.tar.gz 
 #vi application.properties 
-#nohup /opt/jdk1.8.0_171/bin/java -jar /opt/project/demo-0.0.1-SNAPSHOT.war &
+#nohup /opt/jdk1.8.0_171/bin/java -jar /opt/project/demo-0.0.1-SNAPSHOT.war 1>/dev/null &
 
 
 [nginx]

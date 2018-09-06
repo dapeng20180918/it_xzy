@@ -144,6 +144,7 @@ height: 90%;
 .mainright h4 span{border-bottom: solid 3px #2090ff; padding: 0 8px 19px; color: #0068b7;}
 .mainright h4 {border-bottom: solid 1px #ddd; padding: 0 8px 20px; }
 .mainright .modal-content h4 { color:#fff; border-bottom: none!important; padding: 0;}
+.modal-content h4 { color:#fff; border-bottom: none!important; padding: 0;}
 .mainright P { padding: 20px;}
 .inputborder { border: solid 1px #ccc; border-radius: 3px; padding: 6px 12px; }
 .modal-header {border:none!important; background: #0068b7;}

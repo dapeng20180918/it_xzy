@@ -14,6 +14,7 @@ import com.tcloud.demo.model.Rule;
 
 @RestController
 public class RuleController extends BaseController{
+	@SuppressWarnings("unused")
 	private static final Logger logger = LoggerFactory.getLogger(RuleController.class);
 	
 	@Autowired

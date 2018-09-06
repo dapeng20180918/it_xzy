@@ -22,6 +22,7 @@ myApp.service('auth', ['$q', '$rootScope', '$http', '$resource', function ($q, $
     self.roleResource = $resource(restHost + "/rest/role/:id", {id: '@id'}, {});
     self.ruleResource = $resource(restHost + "/rest/rule/:id", {id: '@id'}, {});
     self.eventResource = $resource(restHost + "/rest/event/:id", {id: '@id'}, {});
+    self.feedbackResource = $resource(restHost + "/rest/feedback/:id", {id: '@id'}, {});
     
     //service
     self.dataSourceResource = $resource(restHost + "/rest/datasource/:id", 
