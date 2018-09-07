@@ -73,6 +73,10 @@ myApp.controller('CollectCtrl', ['$scope', '$http', 'auth', function ($scope, $h
 		$scope.step = 3;
 
 	}
+
+	$scope.getStatusPic = function(status){
+		return auth.getStatusPic(status);
+	}
 	
 	$scope.choose = function(name){
 		var filename = "data/citys/" + name + ".json";

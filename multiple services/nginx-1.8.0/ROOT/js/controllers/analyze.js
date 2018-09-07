@@ -41,6 +41,10 @@ myApp.controller('AnalyzeCtrl', ['$scope', 'auth', function ($scope, auth) {
 
 	query();
 
+	$scope.getStatusPic = function(status){
+		return auth.getStatusPic(status);
+	}
+
 	function reset(){
 		$scope.selectedUser = {};
 		$scope.createUser = {

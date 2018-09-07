@@ -80,7 +80,7 @@ overflow: auto;
 .sidebar ul li span.icon-go { background: url(../images/go.png)}
 .sidebar ul li span.icon-portal{ background: url(../images/icons.png) -230px -65px;}
 .sidebar ul li span.icon-data{ background: url(../images/icons.png) -265px -68px;}
-.nav ul li span.icon-user { background: url(../images/icons.png) -227px -22px;}
+nav span.icon-user { background: url(../images/client.png); display: inline-block;}
 .sidebar ul li a:hover { background: #fff; display: block; padding: 0 0 0 10px; padding-right: 3px;}
 
 ul.padding20 { padding-left: 0px!important; margin: 0 0 0 20px;}
@@ -167,6 +167,7 @@ height: 90%;
 .mainr1 h4.datacustom_h { padding: 10px 0 0 10px; 0!important; color: #333;}
 
 .errstr {color:red;}
+
 
 
 

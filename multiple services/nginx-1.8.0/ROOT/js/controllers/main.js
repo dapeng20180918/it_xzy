@@ -21,7 +21,7 @@ myApp.controller('MainCtrl', ['$scope', '$state', 'auth', '$location', '$cookieS
 	
 	if(!$scope.roleadmin){
 		$cookieStore.remove('Authorization');
-        $location.url('/login?err=403');
+		$location.url('/login?err=403');
 	}
 	
 	$scope.createConfirm = function(){

@@ -114,7 +114,29 @@ myApp.service('auth', ['$q', '$rootScope', '$http', '$resource', function ($q, $
     	return ret?ret:"异常";
     };
 
+    this.getStatusPic = function(status){
+        if(status==2){
+            return '/images/button-stop_basic_blue.png';
+        }else{
+            return '/images/button-play_basic_green.png';
+        }
+    }
 
+    this.getStatusPic = function(status){
+        if(status==2){
+            return '/images/button-stop_basic_blue.png';
+        }else{
+            return '/images/button-play_basic_green.png';
+        }
+    }
+
+    this.getUserStatusPic = function(status){
+        if(status==2){
+            return '/images/button-pause_basic_yellow.png';
+        }else{
+            return '/images/button-play_basic_green.png';
+        }
+    }
     
 
 }]);

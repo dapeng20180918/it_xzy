@@ -7,6 +7,10 @@ myApp.controller('UserCtrl', ['$scope', 'auth', '$filter', function ($scope, aut
 	$scope.roleArray = [];
 	$scope.searchKey = "";
 
+	$scope.getStatusPic = function(status){
+		return auth.getUserStatusPic(status);
+	}
+
 	function reset(){
 		$scope.selectedUser = {};
 		$scope.createUser = {};

@@ -48,7 +48,7 @@
 									<td class="mr_input"><input type="radio" name="myRadio" value={{user.id}} ng-click=clickRadio(user)></td>
 									<td>{{user.name}}</td>
 									<td>{{getRoleNameString(user.role_id)}}</td>
-									<td>{{getStatusString(user.status)}}</td>
+									<td><img ng-src={{getStatusPic(user.status)}} style="width:20px;height:20px;"/></td>
 									<td>{{user.telephone_number}}</td>
 									<td>{{user.create_date | date : 'yyyy-MM-dd HH:mm:ss'}}</td>
 								</tr>

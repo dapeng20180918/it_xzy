@@ -14,6 +14,10 @@ myApp.controller('DataScheduleCtrl', ['$scope', 'auth', function ($scope, auth) 
 		$scope.scheduleStatusMap[one.value] = one.key;
 	}
 
+	$scope.getStatusPic = function(status){
+		return auth.getUserStatusPic(status);
+	}
+	
 	query();
 
 	function reset(){

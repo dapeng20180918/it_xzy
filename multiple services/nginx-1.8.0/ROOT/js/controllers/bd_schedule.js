@@ -13,6 +13,10 @@ $scope.users = [];
 	$scope.hostMap = auth.hostMap;
 	$scope.resultPicture = "/images/result/1.jpg";
 
+	$scope.getStatusPic = function(status){
+		return auth.getStatusPic(status);
+	}
+	
 	$scope.treeOptions = {  
 			nodeChildren: "threads",  
 			dirSelectable: true,

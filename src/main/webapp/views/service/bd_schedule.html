@@ -46,7 +46,7 @@
 									<td class="mr_input"><input type="radio" name="myRadio" value={{user.id}} ng-click=clickRadio(user)></td>
 									<td>{{user.name}}</td>
 									<td>{{user.task_type}}</td>
-									<td>{{taskStatusMap[user.status]}}</td>
+									<td><img ng-src={{getStatusPic(user.status)}} style="width:20px;height:20px;"/></td>
 									<td>{{user.user_name}}</td>
 									<td>{{user.create_date}}</td>
 									<td>{{user.finish_date}}</td>
@@ -90,7 +90,7 @@
 										tree-model="treeData" options="treeOptions"
 										on-selection="showSelected(node)" expanded-nodes="expandedNodes" 
 										filter-comparator="false" selected-node="selectedNode">
-										<span ng-show="!node.threads"> <img src="/images/th.png" style="width:20px;height:20px;"/> DefaultClass.{{node.id}}</span>
+										<span ng-show="!node.threads"> <img src="/images/th.png" style="width:16px;height:16px;"/> DefaultClass.{{node.id}}</span>
 										<span ng-show="node.threads" style="font-size:18px;"> &nbsp;{{hostMap[node.id]}} <span style="color: red">({{node.threads.length}})</span></span>
 									</div>
 								</div>

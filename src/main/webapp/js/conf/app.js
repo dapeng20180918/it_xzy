@@ -20,12 +20,12 @@ myApp.config(["$stateProvider", "$urlRouterProvider", '$httpProvider', function 
 					<div ng-include src="\'views/user/navbar.html\'"></div>',
         controller: 'MainCtrl'
     })
-/*    .state("service", {
+    .state("service", {
         url: "/service",
         template: '<div ng-include src="\'views/service/header.html\'"></div> \
 					<div ng-include src="\'views/service/navbar.html\'"></div>',
         controller: 'MainCtrl'
-    })*/
+    })
 
     //user
 	.state("main.user", {
@@ -55,7 +55,7 @@ myApp.config(["$stateProvider", "$urlRouterProvider", '$httpProvider', function 
     })
 
     //service-datasource
-    /*.state("service.data_source", {
+    .state("service.data_source", {
         url: "/data_source",
         templateUrl: "views/service/data_source.html",
         controller: 'DataSourceCtrl'
@@ -102,6 +102,6 @@ myApp.config(["$stateProvider", "$urlRouterProvider", '$httpProvider', function 
         url: "/bigdata_platform",
         templateUrl: "views/service/bigdata_platform.html",
         controller: 'BDSettingCtrl'
-    });*/
+    });
 
 }]);
