@@ -28,6 +28,15 @@ width: 100%;
 	font-size: 22px;
 }
 
+.navbar-message{
+	color: yellow;
+	position: absolute;
+	padding-left: 700px;
+	top: 36px;
+	font-family: Noto Sans S Chinese Medium;
+	font-size: 22px;
+}
+
 .navbar-brand a{ }
 .navbar-right .dropdown-menu {right: 28px!important;}
 .dropdown-menu {min-width: inherit;}

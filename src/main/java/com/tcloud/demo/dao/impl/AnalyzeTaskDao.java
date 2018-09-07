@@ -37,10 +37,10 @@ public class AnalyzeTaskDao implements DaoTemplate<AnalyzeTask> {
 		return repo.findByType(type, name);
 	}
 
-	public void updateOneTask(int minute) {
+	public AnalyzeTask updateOneTask(int minute) {
 		List<AnalyzeTask> ats = repo.findOneTask(minute);
 		if (ats.size() != 1) {
-			return ;
+			return null;
 		}
 		
 		AnalyzeTask at = ats.get(0);
@@ -56,6 +56,7 @@ public class AnalyzeTaskDao implements DaoTemplate<AnalyzeTask> {
 		
 		logger.info("Update Task Status, name:{}, finish time:{}", at.getName(), at.getFinish_date());
 		repo.save(at);
+		return at;
 	}
 
 	@Override

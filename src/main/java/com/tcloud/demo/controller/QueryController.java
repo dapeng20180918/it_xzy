@@ -8,14 +8,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import com.tcloud.demo.dao.impl.EventDao;
+import com.tcloud.demo.dao.impl.MessageDao;
 import com.tcloud.demo.dao.impl.RuleDao;
 import com.tcloud.demo.model.Event;
+import com.tcloud.demo.model.Message;
+import com.tcloud.demo.model.Response;
 import com.tcloud.demo.model.Rule;
 
 @RestController
-public class RuleController extends BaseController{
+public class QueryController extends BaseController{
 	@SuppressWarnings("unused")
-	private static final Logger logger = LoggerFactory.getLogger(RuleController.class);
+	private static final Logger logger = LoggerFactory.getLogger(QueryController.class);
 	
 	@Autowired
 	RuleDao ruleDao;
@@ -23,7 +26,10 @@ public class RuleController extends BaseController{
 	@Autowired
 	EventDao eventDao;
 	
-	//gets
+	@Autowired
+	MessageDao messageDao;
+	
+	//gets rule
 	@GetMapping(value = "/rest/rule")
 	@ResponseBody
 	public List<Rule> getRules() {
@@ -32,6 +38,20 @@ public class RuleController extends BaseController{
 		return ruleDao.getAll();
 	}
 
+	//gets message
+	@GetMapping(value = "/rest/message")
+	@ResponseBody
+	public List<Message> getMessages() {
+		return messageDao.findByOperatorAndReaded(getUser());
+	}
+	
+	@PostMapping(value = "/rest/message/update")
+	@ResponseBody
+	public Response updateMessages() {
+		messageDao.readMessages(getUser());
+		return new Response("success", "");
+	}
+	
 	//gets event
 	@GetMapping(value = "/rest/event")
 	@ResponseBody
