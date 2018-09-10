@@ -8,9 +8,12 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import org.hibernate.annotations.Proxy;
+
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
+@Proxy(lazy = false)
 @JsonIgnoreProperties(value = { "hibernateLazyInitializer", "handler" })
 public class DataCollector {
 	@Id
@@ -28,8 +31,17 @@ public class DataCollector {
 	private String jar_params; // "n1:p1;n2:p2;..." n:param name, p:default value
 	
 	private String tree_name; // json: lv1->lv2
+	private int tree_id;
 	private String storage_type;
 	private String storage_location;
+	
+	public int getTree_id() {
+		return tree_id;
+	}
+
+	public void setTree_id(int tree_id) {
+		this.tree_id = tree_id;
+	}
 
 	public Integer getId() {
 		return id;

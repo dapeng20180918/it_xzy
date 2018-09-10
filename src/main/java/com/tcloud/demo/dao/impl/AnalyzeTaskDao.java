@@ -54,7 +54,7 @@ public class AnalyzeTaskDao implements DaoTemplate<AnalyzeTask> {
 		date = c.getTime();
 		at.setFinish_date(date);
 		
-		logger.info("Update Task Status, name:{}, finish time:{}", at.getName(), at.getFinish_date());
+		logger.info("Update Task Status, name: {}, finish time: {}", at.getName(), at.getFinish_date());
 		repo.save(at);
 		return at;
 	}

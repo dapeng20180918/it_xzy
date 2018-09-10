@@ -40,6 +40,7 @@ myApp.controller('DataCollectCtrl', ['$scope', 'auth', '$filter', function ($sco
 		if($scope.selectedNode.id>0){
 			var name = $scope.selectedNode.parent + " → " + $scope.selectedNode.name;
 			$scope.createUser.tree_name = name;
+			$scope.createUser.tree_id = $scope.selectedNode.id;
 			$scope.showCreateTree = false;
 		}
 	};

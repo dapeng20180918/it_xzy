@@ -31,7 +31,7 @@ width: 100%;
 .navbar-message{
 	color: yellow;
 	position: absolute;
-	padding-left: 700px;
+	right: 260px;
 	top: 36px;
 	font-family: Noto Sans S Chinese Medium;
 	font-size: 22px;

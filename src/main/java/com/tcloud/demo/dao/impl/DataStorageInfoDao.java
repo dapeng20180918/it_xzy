@@ -27,11 +27,18 @@ public class DataStorageInfoDao implements DaoTemplate<DataStorageInfo> {
 		List<DataStorageInfo> users = repo.findByParent(id);
 		return users;
 	}
+	
+	public DataStorageInfo findByName(String name) {
+		try {
+			return repo.findByName(name);
+		} catch (Exception e) {
+			return null;
+		}
+	}
 
 	@Override
 	public DataStorageInfo create(DataStorageInfo t) {
 		t.setId(null);
-		t.setLast_time(new Date());
 		return repo.save(t);
 	}
 
