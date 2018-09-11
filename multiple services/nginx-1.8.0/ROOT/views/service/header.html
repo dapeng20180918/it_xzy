@@ -12,9 +12,10 @@
 					<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
 						<img src="/images/client.png" style="width:32px;height:32px;"/> {{username}}<span class="caret"></span></a>
 						<ul class="dropdown-menu" role="menu">
-							<li><a data-toggle="modal" data-target="#myHelp" >关于</a></li> 
-							<li><a data-toggle="modal" data-target="#myFeedback" >反馈</a></li>
-							<li><a ng-click="signout()" >退出</a></li>
+							<li><a data-toggle="modal" data-target="#myHelp">关于</a></li> 
+							<li><a data-toggle="modal" data-target="#myFeedback">反馈</a></li>
+							<li class="divider"></li>
+							<li><a ng-click="signout()">退出</a></li>
 						</ul>
 					</li>
 				</ul>
@@ -71,14 +72,14 @@
 								<div class="form-group">
 									<label class="col-sm-3 control-label">标题:</label>
 									<div class="col-sm-8">
-										<input type="text" ng-model="createUser.name"  class="form-control">	
+										<input type="text" ng-model="createUser.name" class="form-control">	
 									</div>
 								</div> 
 						
 								<div class="form-group">
 									<label class="col-sm-3 control-label">信息:</label>
 									<div class="col-sm-8">
-										<textarea rows="3" cols="40" ng-model="createUser.description" class="form-control"></textarea>
+										<textarea rows="3" cols="40" ng-model="createUser.content" class="form-control"></textarea>
 									</div>
 								</div>
 							</form>	

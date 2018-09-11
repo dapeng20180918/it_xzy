@@ -1,0 +1,137 @@
+<div class="col-sm-9 col-md-9 col-lg-10 mainright">
+	<ul class="breadcrumb" contenteditable="false">
+		<li><a href="">交流</a><span class="divider"></span></li>
+		<li class="active">问题</li>
+	</ul>
+	<!-- mainr1 -->
+	<div class="mainr1">
+		<div class="page-header">
+
+		</div>
+		<div class="col-lg-12 mainright">
+			<!-- list -->
+			<div ng-show="showTopic==1">
+				<h4>
+					<span>问题列表</span>
+					<form class="form-search form-inline f-search" >
+						<input class="input-medium search-query form-control" type="text" 
+						ng-model="searchKey" placeholder="输入搜索关键字">
+					</form>
+				</h4>
+				
+				<table class="table">
+					<thead>
+						<tr>
+							<th width="40%">主题</th>
+							<th>浏览次数</th>
+							<th>作者</th>
+							<th>最后回复人</th>
+							<th>更新时间</th>
+							
+						</tr>
+					</thead>
+					<tbody>
+						<tr ng-repeat="user in users | filter : searchKey" value={{user.id}}>
+							<td>
+								<a ng-click="clickTopic(user)">{{user.name}}</a>
+							</td>
+							<td>{{user.click_count}}</td>
+							<td>{{user.operator}}</td>
+							<td>{{user.last_replyer}}</td>
+							<td>{{user.lastDate | date : 'yyyy-MM-dd'}}</td>
+						</tr>
+					</tbody>
+					<tfoot>
+						<tr class="active">
+							<td  colspan="10" class="text-right">
+								共计{{(users | filter : searchKey | filter : myFilter).length}}条记录
+							</td>
+						</tr>
+					</tfoot>
+				</table>
+			</div>
+
+			<!-- 帖子 -->
+			<div class="widget-box" ng-show="showTopic==0">
+				<div class="widget-title h4">
+					{{topic.name}}
+					<button type="button" class="custom-right-button" ng-click="showTopic=1"><img src="/images/home.png" style="width:32px;height:32px;"></button>
+					<button type="button" class="custom-right-button" data-toggle="modal" data-target="#myReply"><img src="/images/email.png" style="width:32px;height:32px;"></button>
+				</div>
+				<div class="widget-content nopadding">
+					<ul class="recent-posts">
+						<li>
+							<div class="user-thumb search-user">
+								<span class="user-info custom-left">{{topic.operator}}</span>
+							</div>
+							<div class="article-post">
+								<p>
+									{{topic.content}}
+								</p>
+								<span class="user-info custom-right">{{topic.create_date}}</span>
+							</div>
+						</li>
+					</ul>
+				</div>
+				<div class="widget-content nopadding">
+					<ul class="recent-posts" ng-repeat="user in replys">
+						<li>
+							<div class="user-thumb search-user">
+								<span class="user-info custom-left">{{user.operator}}</span>
+							</div>
+							<div class="article-post">
+								<p>
+									{{user.content}}
+								</p>
+								<span class="user-info custom-right">{{user.create_date}}</span>
+							</div>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<!-- 回复 -->
+			<div class="modal fade" id="myReply" data-backdrop="static" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+							<h4 class="modal-title" id="myModalLabel">回复</h4>
+						</div>
+						<div class="modal-body">
+							<form class="form-horizontal">
+								<div class="form-group">
+									<label class="col-sm-2 control-label">标题:</label>
+									<div class="col-sm-9">
+										<input type="text" ng-model="topic.name" class="form-control" ng-disabled=true>	
+									</div>
+								</div> 
+						
+								<div class="form-group">
+									<label class="col-sm-2 control-label">信息:</label>
+									<div class="col-sm-9">
+										<textarea rows="5" cols="40" ng-model="createReply.content" class="form-control"></textarea>
+									</div>
+								</div>
+							</form>	
+
+						</div>
+						<div class="modal-footer">
+							<div class="form-group">
+								<label class="col-sm-8 control-label"></label>
+
+								<button class="btn btn-default" ng-disabled="error || incomplete" data-dismiss="modal">
+									<span class="glyphicon glyphicon-remove"></span>取消
+								</button>
+								<button class="btn btn-success" ng-disabled="error || incomplete" ng-click="replyConfirm()" submit-button>
+									<span class="glyphicon glyphicon-ok"></span>提交
+								</button>
+							</div>
+						</div>
+					</div><!-- /.modal-content -->
+				</div><!-- /.modal -->
+			</div>
+		</div>
+		
+		
+	</div>
+</div>

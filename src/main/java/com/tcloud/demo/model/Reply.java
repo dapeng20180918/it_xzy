@@ -9,27 +9,25 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class Feedback {
+public class Reply {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
+	private Integer toplicId;
 	private String name;
-
+	private String content;
+	
 	@Column(updatable = false)
 	private String operator;
 	private Date create_date;
-	private String last_replyer;
-	private String content;
-	private Date lastDate;
-	private int click_count;
 
-	public String getLast_replyer() {
-		return last_replyer;
+	public Integer getToplicId() {
+		return toplicId;
 	}
 
-	public void setLast_replyer(String last_replyer) {
-		this.last_replyer = last_replyer;
+	public void setToplicId(Integer toplicId) {
+		this.toplicId = toplicId;
 	}
 
 	public String getContent() {
@@ -38,22 +36,6 @@ public class Feedback {
 
 	public void setContent(String content) {
 		this.content = content;
-	}
-
-	public Date getLastDate() {
-		return lastDate;
-	}
-
-	public void setLastDate(Date lastDate) {
-		this.lastDate = lastDate;
-	}
-
-	public int getClick_count() {
-		return click_count;
-	}
-
-	public void setClick_count(int click_count) {
-		this.click_count = click_count;
 	}
 
 	public Integer getId() {
@@ -88,7 +70,7 @@ public class Feedback {
 		this.create_date = create_date;
 	}
 
-	public Feedback() {
+	public Reply() {
 		super();
 	}
 

@@ -23,7 +23,7 @@ public class FeedbackDao implements DaoTemplate<Feedback> {
 	
 	@Override
 	public List<Feedback> getAll() {
-		Sort sort = new Sort(Sort.Direction.DESC, "id");
+		Sort sort = new Sort(Sort.Direction.DESC, "lastDate");
 		List<Feedback> Feedbacks = repo.findAll(sort);
 		return Feedbacks;
 	}
@@ -32,12 +32,17 @@ public class FeedbackDao implements DaoTemplate<Feedback> {
 	public Feedback create(Feedback t) {
 		t.setId(null);
 		t.setCreate_date(new Date());
+		t.setLastDate(t.getCreate_date());
 		return repo.save(t);
 	}
 
 	@Override
 	public Feedback update(Feedback t) {
 		return null;
+	}
+	
+	public void addCount(Feedback t){
+		repo.addCount(t.getId());
 	}
 
 	@Override

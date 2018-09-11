@@ -45,4 +45,12 @@ public class FeedbackController extends BaseController{
 		
 		return feedbackDao.create(info);
 	}
+	
+	@PostMapping(value = "/rest/feedback/update")
+	@ResponseBody
+	public void addCount(@RequestBody Feedback info) {
+//		String val = "/rest/feedback/update:{}, operator:{}" ;
+//		logger.info(val, info.getName(), getUser());
+		feedbackDao.addCount(info);
+	}
 }

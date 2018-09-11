@@ -43,6 +43,11 @@ myApp.config(["$stateProvider", "$urlRouterProvider", '$httpProvider', function 
         templateUrl: "views/user/event.html",
         controller: 'EventCtrl'
     })
+    .state("main.question", {
+        url: "/question",
+        templateUrl: "views/user/bbs.html",
+        controller: 'BBSCtrl'
+    })
     .state("main.collect", {
         url: "/collect",
         templateUrl: "views/user/collect.html",
