@@ -7,9 +7,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Transient;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.tcloud.demo.utils.MessageBundle;
 
 @Entity
 @JsonIgnoreProperties(value = { "hibernateLazyInitializer", "handler" })
@@ -29,8 +29,29 @@ public class User {
 	private String description;
 	private Long role_id; // FK
 
+	@Transient  
+	private String status_string;
+	@Transient  
+	private String role_string;
+	
 	public User() {
 
+	}
+
+	public String getStatus_string() {
+		return status_string;
+	}
+
+	public void setStatus_string(String status_string) {
+		this.status_string = status_string;
+	}
+
+	public String getRole_string() {
+		return role_string;
+	}
+
+	public void setRole_string(String role_string) {
+		this.role_string = role_string;
 	}
 
 	public Integer getId() {

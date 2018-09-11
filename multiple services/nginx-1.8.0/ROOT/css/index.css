@@ -28,6 +28,15 @@ width: 100%;
 	font-size: 22px;
 }
 
+.navbar-message{
+	color: yellow;
+	position: absolute;
+	right: 260px;
+	top: 36px;
+	font-family: Noto Sans S Chinese Medium;
+	font-size: 22px;
+}
+
 .navbar-brand a{ }
 .navbar-right .dropdown-menu {right: 28px!important;}
 .dropdown-menu {min-width: inherit;}
@@ -147,7 +156,12 @@ height: 90%;
 .modal-content h4 { color:#fff; border-bottom: none!important; padding: 0;}
 .mainright P { padding: 20px;}
 .inputborder { border: solid 1px #ccc; border-radius: 3px; padding: 6px 12px; }
-.modal-header {border:none!important; background: #0068b7;}
+.modal-header {
+	border:none!important; 
+	background: url(../images/client.png) 10px 10px no-repeat #0068b7;
+	background-size:32px 32px;
+	padding-left: 50px;
+}
 .modal-footer { padding: 15px 15px 15px 40px!important; text-align: left!important;}
 .modal-body {min-height:120px;}
 .f-search {width: 240px; float: right; }
@@ -167,6 +181,14 @@ height: 90%;
 .mainr1 h4.datacustom_h { padding: 10px 0 0 10px; 0!important; color: #333;}
 
 .errstr {color:red;}
-
-
+.label {
+    position: absolute;
+    top: 0px;	
+    right: -6px;
+    font-size: 50%;
+}
+.search-query{
+	background: url(../images/search.png) no-repeat right;
+	height:28px 28px;
+}
 

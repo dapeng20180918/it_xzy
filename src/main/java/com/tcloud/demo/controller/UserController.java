@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.*;
 
 import com.mysql.jdbc.StringUtils;
 import com.tcloud.demo.dao.impl.EventDao;
+import com.tcloud.demo.dao.impl.RoleDao;
 import com.tcloud.demo.dao.impl.UserDao;
 import com.tcloud.demo.model.Response;
 import com.tcloud.demo.model.User;
@@ -34,6 +35,9 @@ public class UserController extends BaseController{
 	
 	@Autowired
 	EventDao eventDao;
+	
+	@Autowired
+	RoleDao roleDao;
 	
 	@Value("${spring.token.expire}")
 	private int expire;
@@ -166,6 +170,22 @@ public class UserController extends BaseController{
 //		String val = "/rest/user/getAll, operator:{}";
 //		logger.info(val, myName);
 		return userDao.getAll();
+	}
+	
+	@GetMapping(value = "/user/{name}")
+	@ResponseBody
+	public User getByName(@PathVariable("name") String name) {
+		User user = userDao.findByNameLike(name);
+		String status = user.getStatus()==1?"激活":"冻结";
+		String role = "";
+		try {
+			role = roleDao.getOne(user.getRole_id().intValue()).getName();
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		user.setStatus_string(status);
+		user.setRole_string(role);
+		return user;
 	}
 	
 	//create

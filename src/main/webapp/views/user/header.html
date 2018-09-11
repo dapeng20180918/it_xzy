@@ -4,8 +4,8 @@
 			<!-- Brand and toggle get grouped for better mobile display -->
 			<div class="navbar-header">
 				<a class="navbar-brand">门户平台</a>
-				<div class="navbar-message" data-toggle="modal" data-target="#myMessage"><img src="/images/button_report.png" style="width:32px;height:32px;"/> 
-				通知 ({{messageList.length}})</div>
+				<div class="navbar-message" data-toggle="modal" data-target="#myMessage"> <img src="/images/button_report.png" style="width:32px;height:32px;"/> 
+				<span class="label label-warning" ng-show="messageList.length!=0">{{messageList.length}}</span> </div>
 			</div>
 
 			<!-- Collect the nav links, forms, and other content for toggling -->
@@ -16,14 +16,77 @@
 							<img src="/images/client.png" style="width:32px;height:32px;"/> {{username}}<span class="caret"></span>
 						</a>
 						<ul class="dropdown-menu" role="menu">
-							<li><a data-toggle="modal" data-target="#myHelp" >关于</a></li> 
-							<li><a data-toggle="modal" data-target="#myFeedback" >反馈</a></li>
-							<li><a ng-click="signout()" >退出</a></li>
+							<li><a data-toggle="modal" data-target="#myInfo">个人信息</a></li>
+							<li><a data-toggle="modal" data-target="#myHelp">关于</a></li> 
+							<li><a data-toggle="modal" data-target="#myFeedback">反馈</a></li>
+							<li class="divider"></li>
+							<li><a ng-click="signout()">退出</a></li>
 						</ul>
 					</li>
 				</ul>
 			</div>
 
+			<!-- 详情 -->
+			<div class="modal fade" id="myInfo" data-backdrop="static" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+							<h4 class="modal-title" id="myModalLabel">个人信息</h4>
+						</div>
+						<div class="modal-body">
+							<form class="form-horizontal">
+								<div class="form-group">
+									<label class="col-sm-3 control-label">用户名:</label>
+									<div class="col-sm-7">
+										<input type="text" ng-model="selectedUser.name" ng-disabled="true" class="form-control">
+									</div>
+								</div> 
+								<div class="form-group">
+									<label class="col-sm-3 control-label">角色:</label>
+									<div class="col-sm-7">
+										<input type="text" ng-model="selectedUser.role_string" ng-disabled="true" class="form-control">
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-sm-3 control-label">状态:</label>
+									<div class="col-sm-7">
+										<input type="text" ng-model="selectedUser.status_string" ng-disabled="true" class="form-control">
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-sm-3 control-label">创建时间:</label>
+									<div class="col-sm-7">
+										<input type="text" ng-model="selectedUser.create_date" ng-disabled="true" class="form-control" >
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-sm-3 control-label">电话:</label>
+									<div class="col-sm-7">
+										<input type="text" ng-model="selectedUser.telephone_number" class="form-control" ng-disabled="true">
+									</div>
+								</div> 
+								<div class="form-group">
+									<label class="col-sm-3 control-label">描述:</label>
+									<div class="col-sm-7">
+										<textarea rows="3" cols="40" ng-model="selectedUser.description" class="form-control" ng-disabled="true"></textarea>
+									</div>
+								</div>
+
+							</form>
+						</div>
+						<div class="modal-footer">
+							<div class="form-group">
+								<label class="col-sm-5 control-label"></label>
+								<button class="btn btn-default" data-dismiss="modal">
+								<span class="glyphicon glyphicon-hand-left"></span>返回</button>
+							</div>
+						</div>
+					</div><!-- /.modal-content -->
+				</div><!-- /.modal -->
+			</div>
+
+			<!-- about -->
 			<div class="modal fade" id="myHelp" data-backdrop="static" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 				<div class="modal-dialog">
 					<div class="modal-content">
@@ -35,19 +98,19 @@
 							<form class="form-horizontal" style="font-size:16px;font-weight:bold">
 								<div class="form-group">
 									<label class="col-sm-3 control-label">服务:</label>
-									<div class="col-sm-9" style="padding-top: 7px">
+									<div class="col-sm-9" style="padding-top: 8px">
 										<span>东华软件门户平台</span>
 									</div>
 								</div> 
 								<div class="form-group">
 									<label class="col-sm-3 control-label">版本:</label>
-									<div class="col-sm-9" style="padding-top: 7px">
+									<div class="col-sm-9" style="padding-top: 8px">
 										<span>1.1.0</span>
 									</div>
 								</div> 
 								<div class="form-group">
 									<label class="col-sm-3 control-label">发布日期:</label>
-									<div class="col-sm-9" style="padding-top: 7px">
+									<div class="col-sm-9" style="padding-top: 8px">
 										<span>2018-10-1</span>
 									</div>
 								</div> 
@@ -110,7 +173,7 @@
 					<div class="modal-content">
 						<div class="modal-header">
 							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-							<h4 class="modal-title" id="myModalLabel">通知 ({{messageList.length}})</h4>
+							<h4 class="modal-title" id="myModalLabel">通知</h4>
 						</div>
 						<div class="modal-body">
 							<div class="mainr1">

@@ -4,21 +4,30 @@ myApp.controller('MainCtrl', ['$scope', '$state', 'auth', '$location', '$cookieS
 		function ($scope, $state, auth, $location, $cookieStore, $cookies, $http, $interval, $timeout) {
 	$scope.username = $cookies['User'];
 	$scope.roleadmin = $cookies['Role']=='ADMIN';
-	$scope.createUser = {};
+	$scope.createUser = {};//Feedback
 	$scope.messageList = [];
+	$scope.selectedUser = {};//User
 
 	$timeout(function(){
     	query();
-	},3000);
+	},2000);
 	
 	$scope.timer = $interval(function(){
 		query();
-	},20*1000);
+	},30*1000);
 
 	$scope.$on("$destroy", function() {
 		$interval.cancel($scope.timer);
 	})
 	
+	auth.userResource.get({id: $scope.username}, {}, function (resp) {
+		auth.info(resp);
+		$scope.selectedUser = resp;
+	}, function (err) {
+		auth.error(err);
+		$scope.selectedUser = {};
+	});
+
 	function query(){
 		//reset
 		$scope.messageList = [];

@@ -50,16 +50,18 @@ public class AnalyzeTaskController extends BaseController{
 	@ResponseBody
 	public AnalyzeTask create(@RequestBody AnalyzeTask analyzetask) {
 		String val = "/rest/analyzetask/create:{}, operator:{}" ;
-		logger.info(val, analyzetask.getName(), getUser());
 		analyzetask.setUser_name(getUser());
 		analyzetask.selectHosts();
+		AnalyzeTask analyzeTask = analyzeTaskDao.create(analyzetask);
+		
+		logger.info(val, analyzetask.getName(), getUser());
 		Event event = new Event();
 		event.setType(MessageBundle.ANALYZE_TASK_CREATE);
 		event.setOperator(getUser());
 		event.setDescription(String.format("name:%s", analyzetask.getName()));
 		eventDao.create(event);
 		
-		return analyzeTaskDao.create(analyzetask);
+		return analyzeTask;
 	}
 	
 	//update

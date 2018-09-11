@@ -19,15 +19,15 @@
 						ng-model="searchKey" placeholder="输入搜索关键字">
 					</form>
 				</h4>
-				<div style="padding-left: 90px;padding-top: 10px">
-											开始时间: <input name="dateS" id="dateS" type="text" placeholder="开始时间"
-											onclick="WdatePicker({dateFmt:'yyyy-MM-dd'})"
-											class="Wdate inputborder" style="width: 196px;">&nbsp;&nbsp;&nbsp;&nbsp;
-											结束时间: <input name="dateE" id="dateE" type="text" placeholder="结束时间"
-											onclick="WdatePicker({dateFmt:'yyyy-MM-dd'})"
-											class="Wdate inputborder" style="width: 196px;">&nbsp;&nbsp;&nbsp;&nbsp;
-											<button type="button" class="btn btn-default" ng-click="selectdate()">搜索</button>
-										</div>
+				<div style="padding-left: 60px;padding-top: 10px">
+					开始时间: <input name="dateS" id="dateS" type="text" placeholder="开始时间"
+					onclick="WdatePicker({dateFmt:'yyyy-MM-dd'})"
+					class="Wdate inputborder" style="width: 196px;">&nbsp;&nbsp;&nbsp;&nbsp;
+					结束时间: <input name="dateE" id="dateE" type="text" placeholder="结束时间"
+					onclick="WdatePicker({dateFmt:'yyyy-MM-dd'})"
+					class="Wdate inputborder" style="width: 196px;">&nbsp;&nbsp;&nbsp;&nbsp;
+					<button type="button" class="btn btn-default" ng-click="selectdate()"><img src="/images/search.png" style="width:20px;height:20px;"/> 搜索</button>
+				</div>
 				<div class="mainr1-z-1">
 					<table class="table">
 						<thead>
