@@ -24,7 +24,6 @@ public class DataCollectScheduleDao implements DaoTemplate<DataCollectSchedule> 
 	}
 	
 	public List<DataCollectSchedule> getRunningSchedules() {
-		Sort sort = new Sort(Sort.Direction.ASC, "id");
 		List<DataCollectSchedule> users = repo.getRunningSchedules();
 		return users;
 	}

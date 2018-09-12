@@ -12,6 +12,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.web.filter.CharacterEncodingFilter;
 
 
@@ -21,6 +22,7 @@ import org.springframework.web.filter.CharacterEncodingFilter;
 @EnableAutoConfiguration(exclude = {
 //	org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration.class
 })
+@EnableTransactionManagement
 public class DemoCloudApplication {
 	private static final Logger logger = LoggerFactory.getLogger(DemoCloudApplication.class);
 	

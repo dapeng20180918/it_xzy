@@ -5,8 +5,10 @@ import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
+import com.tcloud.demo.dao.DashboardService;
 import com.tcloud.demo.dao.impl.EventDao;
 import com.tcloud.demo.dao.impl.MessageDao;
 import com.tcloud.demo.dao.impl.RuleDao;
@@ -14,8 +16,11 @@ import com.tcloud.demo.model.Event;
 import com.tcloud.demo.model.Message;
 import com.tcloud.demo.model.Response;
 import com.tcloud.demo.model.Rule;
+import com.tcloud.demo.model.Dashboard;
+
 
 @RestController
+@Transactional(rollbackFor=Exception.class)
 public class QueryController extends BaseController{
 	@SuppressWarnings("unused")
 	private static final Logger logger = LoggerFactory.getLogger(QueryController.class);
@@ -28,6 +33,9 @@ public class QueryController extends BaseController{
 	
 	@Autowired
 	MessageDao messageDao;
+	
+	@Autowired
+	DashboardService ds;
 	
 	//gets rule
 	@GetMapping(value = "/rest/rule")
@@ -43,6 +51,12 @@ public class QueryController extends BaseController{
 	@ResponseBody
 	public List<Message> getMessages() {
 		return messageDao.findByOperatorAndReaded(getUser());
+	}
+	
+	@GetMapping(value = "/rest/dashboard")
+	@ResponseBody
+	public Dashboard getDashboard() {
+		return ds.getDashboard();
 	}
 	
 	@PostMapping(value = "/rest/message/update")

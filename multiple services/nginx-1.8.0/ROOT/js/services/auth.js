@@ -24,6 +24,8 @@ myApp.service('auth', ['$q', '$rootScope', '$http', '$resource', function ($q, $
     self.eventResource = $resource(restHost + "/rest/event/:id", {id: '@id'}, {});
     self.feedbackResource = $resource(restHost + "/rest/feedback/:id", {id: '@id'}, {});
     self.messageResource = $resource(restHost + "/rest/message/:id", {id: '@id'}, {});
+    self.replyResource = $resource(restHost + "/rest/reply/:id", {id: '@id'}, {});
+    self.dashboardResource = $resource(restHost + "/rest/dashboard/:id", {id: '@id'}, {});
     
     //service
     self.dataSourceResource = $resource(restHost + "/rest/datasource/:id", 

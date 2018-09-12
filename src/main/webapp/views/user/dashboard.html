@@ -1,0 +1,86 @@
+<div class="col-sm-9 col-md-9 col-lg-10 mainright">
+	<ul class="breadcrumb" contenteditable="false">
+		<li><a href="">主页</a><span class="divider"></span></li>
+		<li class="active">控制台</li>
+	</ul>
+	<!-- mainr1 -->
+	<div class="mainr1">
+		<div class=" col-lg-12 mainright">
+			<div class="dashbord-header" style="padding-top:20px">
+				<h4>数据源</h4>
+			</div>
+			<div class="col-lg-12">
+				<div class="span12">
+					<ul class="quickstats">
+						<li ui-sref="service.data_source">
+							<img class="small-chart" src="images/upcoming-work.png" width="32" height="32">
+							<div class="chart-detail">
+								<span class="amount">{{dashboard.dSource}}</span>
+								<span class="description">数据源</span>
+							</div>
+						</li>
+						<li ui-sref="service.data_collect">
+							<img class="small-chart" src="images/publish.png" width="32" height="32">
+							<div class="chart-detail">
+								<span class="amount">{{dashboard.dCollector}}</span>
+								<span class="description">采集器</span>
+							</div>
+						</li>
+						<li ui-sref="service.data_storage">
+							<img class="small-chart" src="images/database.png" width="32" height="32">
+							<div class="chart-detail">
+								<span class="amount">{{dashboard.dStorageLength}} / <span class="ublue">{{formatSize(dashboard.dStorageSize)}}</span></span>
+								<span class="description">数据存储</span>
+							</div>
+						</li>
+						<li ui-sref="service.data_schedule">
+							<img class="small-chart" src="images/full-time.png" width="32" height="32">
+							<div class="chart-detail">
+								<span class="amount"><span class="ugreen">{{dashboard.dScheduleRunning}}</span> / {{dashboard.dSchedule}}</span>
+								<span class="description">采集任务</span>
+							</div>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div class="dashbord-header" style="padding-top:120px;">
+				<h4>并行分析与数据挖掘</h4>
+			</div>
+			<div class="col-lg-12">
+				<div class="span12">
+					<ul class="quickstats">
+						<li ui-sref="service.bd_adapter">
+							<img class="small-chart" src="images/config1.png" width="32" height="32">
+							<div class="chart-detail">
+								<span class="amount">{{dashboard.adapter}}</span>
+								<span class="description">适配器</span>
+							</div>
+						</li>
+						<li ui-sref="service.bd_algorithm">
+							<img class="small-chart" src="images/archives.png" width="32" height="32">
+							<div class="chart-detail">
+								<span class="amount">{{dashboard.strategy}}</span>
+								<span class="description">算法库</span>
+							</div>
+						</li>
+						<li ui-sref="service.bd_schedule">
+							<img class="small-chart" src="images/link.png" width="32" height="32">
+							<div class="chart-detail">
+								<span class="amount"><span class="ugreen">{{dashboard.taskRunning}}</span> / {{dashboard.task}}</span>
+								<span class="description">并行任务</span>
+							</div>
+						</li>
+						<li ui-sref="service.bigdata_platform">
+							<img class="small-chart" src="images/networking.png" width="32" height="32">
+							<div class="chart-detail">
+								<span class="amount">{{dashboard.hostLength}}</span>
+								<span class="description">计算节点</span>
+							</div>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		
+	</div>
+</div>

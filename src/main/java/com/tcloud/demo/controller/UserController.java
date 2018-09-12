@@ -13,6 +13,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import com.mysql.jdbc.StringUtils;
@@ -27,6 +28,7 @@ import com.tcloud.demo.utils.MessageBundle;
 
 @RestController
 @RequestMapping("/rest")
+@Transactional(rollbackFor=Exception.class)
 public class UserController extends BaseController{
 	private static final Logger logger = LoggerFactory.getLogger(UserController.class);
 
@@ -55,7 +57,8 @@ public class UserController extends BaseController{
 		if(StringUtils.isNullOrEmpty(ipAddr))
 			ipAddr = request.getRemoteAddr();
 		
-		if (userVo != null && userVo.getPassword().equalsIgnoreCase(user.getPassword())) {
+		if (userVo != null && userVo.getPassword().equals(user.getPassword()) 
+				&& userVo.getName().equals(user.getName())) {
 			String subject = userVo.getName();
 			String token = Jwts
 					.builder()
@@ -89,8 +92,8 @@ public class UserController extends BaseController{
 		User userVo =  userDao.findByNameLike(user.getName());
 		String ipAddr = request.getLocalAddr();
 		if (userVo != null && 
-			userVo.getRole_id()==1 &&
-			userVo.getPassword().equalsIgnoreCase(user.getPassword())) {
+			userVo.getRole_id()==1 && userVo.getName().equals(user.getName()) &&
+			userVo.getPassword().equals(user.getPassword())) {
 			String subject = userVo.getName();
 			String token = Jwts
 					.builder()

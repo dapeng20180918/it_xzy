@@ -50,6 +50,12 @@ public class ScheduledTasks {
 
 	@Value("${spring.sub.minute}")
 	public int subminute;
+	
+	@Value("${user.storageincrease.min}")
+	public int storage_min;
+	
+	@Value("${user.storageincrease.max}")
+	public int storage_max;
 
 	@Scheduled(cron = "${schedule.cron}")
 	// @Scheduled(fixedRate = 1000 * 60)
@@ -97,7 +103,7 @@ public class ScheduledTasks {
 					// update data storage
 					DataCollector dc = dataCollectorDao.getOne(schedule.getDatacollector_id());
 					DataStorageInfo dsi = dataStorageInfoDao.findByName(dc.getStorage_location());
-					int size = (int) (Math.random() * 15 + 5);
+					int size = (int) (Math.random() * (storage_max - storage_min) + storage_min);
 					if(dsi != null){
 						//update
 						dsi.setData_size(dsi.getData_size() + size);

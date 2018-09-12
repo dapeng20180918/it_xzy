@@ -9,7 +9,14 @@ myApp.controller('MainCtrl', ['$scope', '$state', 'auth', '$location', '$cookieS
 	$scope.selectedUser = {};//User
 
 	$timeout(function(){
-    	query();
+		query();
+		auth.userResource.get({id: $scope.username}, {}, function (resp) {
+			auth.info(resp);
+			$scope.selectedUser = resp;
+		}, function (err) {
+			auth.error(err);
+			$scope.selectedUser = {};
+		});
 	},2000);
 	
 	$scope.timer = $interval(function(){
@@ -19,14 +26,6 @@ myApp.controller('MainCtrl', ['$scope', '$state', 'auth', '$location', '$cookieS
 	$scope.$on("$destroy", function() {
 		$interval.cancel($scope.timer);
 	})
-	
-	auth.userResource.get({id: $scope.username}, {}, function (resp) {
-		auth.info(resp);
-		$scope.selectedUser = resp;
-	}, function (err) {
-		auth.error(err);
-		$scope.selectedUser = {};
-	});
 
 	function query(){
 		//reset
@@ -53,6 +52,16 @@ myApp.controller('MainCtrl', ['$scope', '$state', 'auth', '$location', '$cookieS
 	};
 
 	$scope.createConfirm = function(){
+		if(!$scope.createUser.name || $scope.createUser.name==""){
+			auth.error("topic is null.");
+			$scope.$broadcast("enableSubmitBtn");
+			return;
+		}
+		if(!$scope.createUser.content || $scope.createUser.content==""){
+			auth.error("content is null.");
+			$scope.$broadcast("enableSubmitBtn");
+			return;
+		}
 		//do something
 		auth.info("createConfirm:");
 		auth.info($scope.createUser);

@@ -30,7 +30,7 @@ myApp.controller('SigninCtrl', ['$scope','$state', '$location', '$http', 'auth',
 
             $cookies['Authorization'] = ssokey;
             $cookies['User'] = data.name;
-            $state.go("service.bd_schedule");
+            $state.go("service.dashboard");
             
         }).error(function(err) {  
         	console.error(err);
@@ -40,7 +40,7 @@ myApp.controller('SigninCtrl', ['$scope','$state', '$location', '$http', 'auth',
 	
 	//check login 2 times
 	if($cookies['Authorization']){
-		$state.go("service.bd_schedule");
+		$state.go("service.dashboard");
 	}
 
 
@@ -62,7 +62,7 @@ myApp.controller('SigninCtrl', ['$scope','$state', '$location', '$http', 'auth',
             }else{
             	$cookies['Role'] = 'USER';
             }
-            $state.go("service.bd_schedule");
+            $state.go("service.dashboard");
             $scope.$broadcast("enableSubmitBtn");
         }).error(function(err) {  
         	console.error(err);

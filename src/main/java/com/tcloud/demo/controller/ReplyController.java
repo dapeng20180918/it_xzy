@@ -5,6 +5,7 @@ import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import com.tcloud.demo.dao.impl.ReplyDao;
@@ -12,6 +13,7 @@ import com.tcloud.demo.dao.impl.EventDao;
 import com.tcloud.demo.model.Reply;
 
 @RestController
+@Transactional(rollbackFor=Exception.class)
 public class ReplyController extends BaseController{
 	private static final Logger logger = LoggerFactory.getLogger(ReplyController.class);
 

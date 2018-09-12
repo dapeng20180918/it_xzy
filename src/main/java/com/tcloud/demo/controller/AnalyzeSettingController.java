@@ -3,6 +3,7 @@ package com.tcloud.demo.controller;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import com.tcloud.demo.dao.impl.AnalyzeSettingDao;
@@ -13,6 +14,7 @@ import com.tcloud.demo.utils.MessageBundle;
 
 @RestController
 @RequestMapping("/rest")
+@Transactional(rollbackFor=Exception.class)
 public class AnalyzeSettingController extends BaseController{
 	private static final Logger logger = LoggerFactory.getLogger(AnalyzeSettingController.class);
 	

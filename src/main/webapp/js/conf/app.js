@@ -48,6 +48,7 @@ myApp.config(["$stateProvider", "$urlRouterProvider", '$httpProvider', function 
         templateUrl: "views/user/bbs.html",
         controller: 'BBSCtrl'
     })
+    
     .state("main.collect", {
         url: "/collect",
         templateUrl: "views/user/collect.html",
@@ -60,6 +61,11 @@ myApp.config(["$stateProvider", "$urlRouterProvider", '$httpProvider', function 
     })
 
     //service-datasource
+    .state("service.dashboard", {
+        url: "/dashboard",
+        templateUrl: "views/user/dashboard.html",
+        controller: 'DashboardCtrl'
+    })
     .state("service.data_source", {
         url: "/data_source",
         templateUrl: "views/service/data_source.html",
