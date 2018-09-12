@@ -30,7 +30,7 @@ import com.tcloud.demo.model.Role;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 
-@RunWith(SpringRunner.class)
+//@RunWith(SpringRunner.class)
 @SpringBootTest
 public class RuleControllerTest {
 	@Autowired  
@@ -54,7 +54,7 @@ public class RuleControllerTest {
         System.out.println(result.getResponse().getContentAsString());  
     }  
 	
-    @Test  
+//    @Test  
     public void testGetRoles() throws Exception {  
     	Map<String, Object> map = new HashMap<>();
     	

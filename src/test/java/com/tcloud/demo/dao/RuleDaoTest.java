@@ -13,19 +13,19 @@ import com.tcloud.demo.dao.impl.RuleDao;
 import com.tcloud.demo.model.Rule;
 
 
-@RunWith(SpringRunner.class)
+//@RunWith(SpringRunner.class)
 @SpringBootTest(classes = RuleDaoTest.class)
 @ComponentScan(basePackages="com.tcloud.demo")  
 public class RuleDaoTest {
 	@Autowired
 	RuleDao dao;
 	
-	@Test
+//	@Test
 	public void get(){
 		System.out.println(dao.getAll());
 	}
 	
-	@Test
+//	@Test
 	public void create(){
 		Rule rule = new Rule();
 		rule.setName("test");

@@ -10,14 +10,14 @@ import org.springframework.test.context.junit4.SpringRunner;
 import com.tcloud.demo.dao.DashboardService;
 import com.tcloud.demo.model.Dashboard;
 
-@RunWith(SpringRunner.class)
+//@RunWith(SpringRunner.class)
 @SpringBootTest(classes = DashboardServiceTest.class)
 @ComponentScan(basePackages="com.tcloud.demo")
 public class DashboardServiceTest {
 	@Autowired
 	DashboardService ds;
 	
-	@Test
+//	@Test
 	public void get(){
 		System.out.println("------start------");
 		Dashboard a = ds.getDashboard();

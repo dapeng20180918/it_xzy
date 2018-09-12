@@ -11,19 +11,19 @@ import org.springframework.test.context.junit4.SpringRunner;
 import com.tcloud.demo.dao.impl.RuleDao;
 import com.tcloud.demo.model.Rule;
 
-@RunWith(SpringRunner.class)
+//@RunWith(SpringRunner.class)
 @SpringBootTest
 public class DemoCloudApplicationTests {
 	@Autowired
 	RuleDao dao;
 	
-	@Test
+//	@Test
 	public void get(){
 		List<Rule> rules = dao.getAll();
 		System.out.println(rules);
 	}
 	
-	@Test
+//	@Test
 	public void contextLoads() {
 		System.out.println("--------------------------start Test");
 	}
