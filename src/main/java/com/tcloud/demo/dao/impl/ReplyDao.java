@@ -37,7 +37,8 @@ public class ReplyDao implements DaoTemplate<Reply> {
 		t.setId(null);
 		t.setCreate_date(new Date());
 		Reply reply = repo.save(t);
-		feedbackRepo.updateOne(reply.getToplicId(), reply.getOperator(), reply.getCreate_date());
+		int reply_count = repo.getByTopic(t.getToplicId()).size();
+		feedbackRepo.updateOne(reply.getToplicId(), reply.getOperator(), reply.getCreate_date(), reply_count);
 		return reply;
 	}
 

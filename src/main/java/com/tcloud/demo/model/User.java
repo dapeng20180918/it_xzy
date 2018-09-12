@@ -25,6 +25,7 @@ public class User {
 	private String telephone_number;
 	@Column(updatable = false)
 	private Date create_date;
+	private Date last_date;
 	private int status; // 1 actived 2 locked 3 delete
 	private String description;
 	private Long role_id; // FK
@@ -36,6 +37,14 @@ public class User {
 	
 	public User() {
 
+	}
+
+	public Date getLast_date() {
+		return last_date;
+	}
+
+	public void setLast_date(Date last_date) {
+		this.last_date = last_date;
 	}
 
 	public String getStatus_string() {

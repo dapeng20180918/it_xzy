@@ -15,9 +15,9 @@ public interface FeedbackRepository extends JpaRepository<Feedback,Integer>{
 	List<Feedback> findByOperatorLike(String name);
 	
 	@Transactional
-	@Query(value = "update feedback set last_replyer=?2,last_date=?3 where id=?1", nativeQuery = true)
+	@Query(value = "update feedback set last_replyer=?2,last_date=?3,reply_count=?4 where id=?1", nativeQuery = true)
 	@Modifying
-	void updateOne(int id, String last_replyer, Date last_date);
+	void updateOne(int id, String last_replyer, Date last_date, int cnt);
 	
 	@Transactional
 	@Query(value = "update feedback set click_count=click_count+1 where id=?1", nativeQuery = true)

@@ -72,8 +72,9 @@ public class UserController extends BaseController{
 			event.setType(MessageBundle.USER_LOGIN);
 			event.setOperator(user.getName());
 			event.setDescription(String.format("name:%s, ip:%s, expire:%d minutes", user.getName(), ipAddr, expire));
-			eventDao.create(event);
-			
+			event = eventDao.create(event);
+			userVo.setLast_date(event.getCreate_date());
+			userVo = userDao.update(userVo);
 		}else{
 			String val = "/rest/user/login，user:{}, Unauthorized";
 			logger.warn(val, user.getName());
@@ -105,7 +106,9 @@ public class UserController extends BaseController{
 			event.setType(MessageBundle.USER_LOGIN);
 			event.setOperator(user.getName());
 			event.setDescription(String.format("name:%s, ip:%s, expire:%d minutes", user.getName(), ipAddr, expire));
-			eventDao.create(event);
+			event = eventDao.create(event);
+			userVo.setLast_date(event.getCreate_date());
+			userVo = userDao.update(userVo);
 		}else{
 			String val = "/rest/user/loginadmin，user:{}, Unauthorized";
 			logger.warn(val, user.getName());

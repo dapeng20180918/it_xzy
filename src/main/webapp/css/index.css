@@ -100,6 +100,8 @@ ul.padding20 { padding-left: 0px!important; margin: 0 0 0 20px;}
 .mainr1 .formblack { background: linear-gradient(#f7f8fb,#f0f4f9); border: solid 1px #e2eaf1; padding: 20px 25px;}
 .mainr1 { padding: 0 20px;}
 .mainr1-z{ position: fixed; bottom: 0; right:30px; left: 340px; top:280px; overflow-y: auto; overflow-x: hidden; }
+.mainr1-reply{ position: fixed; bottom: 0; right:30px; left: 340px; top:240px; overflow-y: auto; overflow-x: hidden; }
+.mainr1-reply2{ position: fixed; bottom: 0; right:30px; left: 340px; top:160px; overflow-y: auto; overflow-x: hidden; }
 .mainr1-z-1{ position: fixed; bottom: 0; right:30px; left: 340px; top:300px; overflow-y: auto; overflow-x: hidden; }
 .mainr1 .formblack .control-group { float: left; margin-right: 20px;}
 .mainr1 .formblack .control-group .control-label { float:left; padding-right: 6px;}
@@ -267,7 +269,7 @@ height: 90%;
 }
 
 .mainr1 .widget-title{	
-	padding-left: 30px;
+	padding-left: 60px;
 	margin-bottom: 0px;
 }
 

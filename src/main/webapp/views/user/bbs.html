@@ -18,75 +18,81 @@
 						ng-model="searchKey" placeholder="输入搜索关键字">
 					</form>
 				</h4>
-				
-				<table class="table">
-					<thead>
-						<tr>
-							<th width="40%">主题</th>
-							<th>浏览次数</th>
-							<th>作者</th>
-							<th>最后回复人</th>
-							<th>更新时间</th>
-							
-						</tr>
-					</thead>
-					<tbody>
-						<tr ng-repeat="user in users | filter : searchKey" value={{user.id}}>
-							<td>
-								<a ng-click="clickTopic(user)">{{user.name}}</a>
-							</td>
-							<td>{{user.click_count}}</td>
-							<td>{{user.operator}}</td>
-							<td>{{user.last_replyer}}</td>
-							<td>{{user.lastDate | date : 'yyyy-MM-dd'}}</td>
-						</tr>
-					</tbody>
-					<tfoot>
-						<tr class="active">
-							<td  colspan="10" class="text-right">
-								共计{{(users | filter : searchKey | filter : myFilter).length}}条记录
-							</td>
-						</tr>
-					</tfoot>
-				</table>
+				<div class="mainr1-reply">
+					<table class="table">
+						<thead>
+							<tr>
+								<th width="40%">主题</th>
+								<th>浏览次数</th>
+								<th>回复次数</th>
+								<th>作者</th>
+								<th>最后回复人</th>
+								<th>更新时间</th>
+								
+							</tr>
+						</thead>
+						<tbody>
+							<tr ng-repeat="user in users | filter : searchKey" value={{user.id}}>
+								<td>
+									<a ng-click="clickTopic(user)">{{user.name}}</a>
+								</td>
+								<td>{{user.click_count}}</td>
+								<td>{{user.reply_count}}</td>
+								<td>{{user.operator}}</td>
+								<td>{{user.last_replyer}}</td>
+								<td>{{user.lastDate | date : 'yyyy-MM-dd'}}</td>
+							</tr>
+						</tbody>
+						<tfoot>
+							<tr class="active">
+								<td  colspan="10" class="text-right">
+									共计{{(users | filter : searchKey | filter : myFilter).length}}条记录
+								</td>
+							</tr>
+						</tfoot>
+					</table>
+				</div>
 			</div>
 
 			<!-- 帖子 -->
 			<div class="widget-box" ng-show="showTopic==0">
-				<div class="widget-title h4">
-					{{topic.name}}
-					<button type="button" class="custom-right-button" ng-click="showTopic=1"><img src="/images/home.png" style="width:32px;height:32px;"></button>
-					<button type="button" class="custom-right-button" data-toggle="modal" data-target="#myReply"><img src="/images/email.png" style="width:32px;height:32px;"></button>
-				</div>
-				<div class="widget-content nopadding">
-					<ul class="recent-posts">
-						<li>
-							<div class="user-thumb search-user">
-								<span class="user-info custom-left">{{topic.operator}}</span>
-							</div>
-							<div class="article-post">
-								<p>
-									{{topic.content}}
-								</p>
-								<span class="user-info custom-right">{{topic.create_date}}</span>
-							</div>
-						</li>
-					</ul>
-				</div>
-				<div class="widget-content nopadding">
-					<ul class="recent-posts" ng-repeat="user in replys">
-						<li>
-							<div class="user-thumb search-user">
-								<span class="user-info custom-left">{{user.operator}}</span>
-							</div>
-							<div class="article-post">
-								<p>
-									{{user.content}}
-								</p>
-								<span class="user-info custom-right">{{user.create_date}}</span>
-							</div>
-						</li>
-					</ul>
+				<div class="mainr1-reply2">
+					<div class="widget-title h4">
+						<strong>{{topic.name}}</strong>
+						<button type="button" class="custom-right-button" ng-click="showTopic=1"><img src="/images/home.png" style="width:32px;height:32px;"></button>
+						<button type="button" class="custom-right-button" data-toggle="modal" data-target="#myReply"><img src="/images/email.png" style="width:32px;height:32px;"></button>
+					</div>
+					
+					<div class="widget-content nopadding">
+						<ul class="recent-posts">
+							<li>
+								<div class="user-thumb search-user">
+									<span class="user-info custom-left">{{topic.operator}}</span>
+								</div>
+								<div class="article-post">
+									<p>
+										{{topic.content}}
+									</p>
+									<span class="user-info custom-right">{{topic.create_date}}</span>
+								</div>
+							</li>
+						</ul>
+					</div>
+					<div class="widget-content nopadding">
+						<ul class="recent-posts" ng-repeat="user in replys">
+							<li>
+								<div class="user-thumb search-user">
+									<span class="user-info custom-left">{{user.operator}}</span>
+								</div>
+								<div class="article-post">
+									<p>
+										{{user.content}}
+									</p>
+									<span class="user-info custom-right">{{user.create_date}}</span>
+								</div>
+							</li>
+						</ul>
+					</div>
 				</div>
 			</div>
 			<!-- 回复 -->
