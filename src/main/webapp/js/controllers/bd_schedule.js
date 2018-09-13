@@ -2,7 +2,7 @@
 
 myApp.controller('BDScheduleCtrl', ['$scope', 'auth',  function ($scope, auth) {
 
-$scope.users = [];
+	$scope.users = [];
 	$scope.searchKey = "";
 	$scope.strategyArray = [];
 	$scope.strategyMap = {};

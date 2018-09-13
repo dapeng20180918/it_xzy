@@ -107,7 +107,8 @@ myApp.config(["$stateProvider", "$urlRouterProvider", '$httpProvider', function 
     //link others
     .state("service.cloud_platform", {
         url: "/cloud_platform",
-        templateUrl: "views/service/cloud_platform.html"
+        templateUrl: "views/service/cloud_platform.html",
+        controller: 'BDCloud'
     })
     .state("service.bigdata_platform", {
         url: "/bigdata_platform",

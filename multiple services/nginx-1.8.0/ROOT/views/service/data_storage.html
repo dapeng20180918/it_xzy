@@ -6,7 +6,7 @@
 	<!-- mainr2 -->
 	<div class="mainr2 col-sm-12 col-md-12 col-lg-12  ">
 		<!-- 资料树 -->
-		<div class="sidebar2  col-sm-5 col-md-2 col-lg-2">
+		<div class="sidebar2 col-sm-5 col-md-2 col-lg-2" style="max-height: 200px;overflow-y: auto;" id="storageTree">
 			<h5>资料树</h5>
 			<div treecontrol class="tree-classic"
 				tree-model="treeData" options="treeOptions"
@@ -17,8 +17,8 @@
 			</div>
 		</div>
 		<!-- table -->
-		<div class="main2"> 
-			<div class="page-header" contenteditable="false">
+		<div class="main2" > 
+			<div class="" contenteditable="false">
 				<h4>
 					<span>{{selectName}}</span>
 					<form class="form-search form-inline f-search" >
@@ -27,34 +27,34 @@
 					</form>
 				</h4> 
 			</div>
-			<table class="table">
-
-				<thead>
-					<tr>
-						<th>存储位置</th>
-						<th>存储类型</th>
-						<th>更新时间</th>
-						<th>数据量</th>
-						
-					</tr>
-				</thead>
-				<tbody>
-					<tr ng-repeat="data in dsinfo | filter : searchKey">
-						<td>{{data.storage_location}}</td>
-						<td>{{data.storage_type}}</td>
-						<td>{{data.last_time | date : 'yyyy-MM-dd'}}</td>
-						<td>{{formatSize(data.data_size)}}</td>
-					</tr>
-
-				</tbody>
-				<tfoot>
-					<tr class="active">
-						<td  colspan="10" class="text-right">
-							共计{{(dsinfo| filter : searchKey).length}}条记录
-						</td>
-					</tr>
-				</tfoot>
-			</table>
+			<div style="max-height: 200px;overflow-y: auto;" id="storageRight">
+				<table class="table">
+					<thead>
+						<tr>
+							<th>存储位置</th>
+							<th>存储类型</th>
+							<th>更新时间</th>
+							<th>数据量</th>
+							
+						</tr>
+					</thead>
+					<tbody>
+						<tr ng-repeat="data in dsinfo | filter : searchKey">
+							<td>{{data.storage_location}}</td>
+							<td>{{data.storage_type}}</td>
+							<td>{{data.last_time | date : 'yyyy-MM-dd'}}</td>
+							<td>{{formatSize(data.data_size)}}</td>
+						</tr>
+					</tbody>
+					<tfoot>
+						<tr class="active">
+							<td  colspan="10" class="text-right">
+								共计{{(dsinfo| filter : searchKey).length}}条记录
+							</td>
+						</tr>
+					</tfoot>
+				</table>
+			</div>
 		</div>
 
 	</div> 
