@@ -39,6 +39,7 @@ public class DataStorageInfoDao implements DaoTemplate<DataStorageInfo> {
 	@Override
 	public DataStorageInfo create(DataStorageInfo t) {
 		t.setId(null);
+		t.setLast_time(new Date());
 		return repo.save(t);
 	}
 
