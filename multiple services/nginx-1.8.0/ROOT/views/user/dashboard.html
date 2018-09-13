@@ -26,14 +26,14 @@
 								<span class="description">采集器</span>
 							</div>
 						</li>
-						<li ui-sref="service.data_storage">
+						<li ui-sref="service.data_storage" title="存储数据: {{dashboard.dStorageLength}}, 数据量: {{formatSize(dashboard.dStorageSize)}}">
 							<img class="small-chart" src="images/database.png" width="32" height="32">
 							<div class="chart-detail">
 								<span class="amount">{{dashboard.dStorageLength}} / <span class="ublue">{{formatSize(dashboard.dStorageSize)}}</span></span>
 								<span class="description">数据存储</span>
 							</div>
 						</li>
-						<li ui-sref="service.data_schedule">
+						<li ui-sref="service.data_schedule" title="任务: {{dashboard.dSchedule}}, 激活: {{dashboard.dScheduleRunning}}">
 							<img class="small-chart" src="images/calendar.png" width="30" height="32">
 							<div class="chart-detail">
 								<span class="amount"><span class="ugreen">{{dashboard.dScheduleRunning}}</span> / {{dashboard.dSchedule}}</span>
@@ -63,7 +63,7 @@
 								<span class="description">算法库</span>
 							</div>
 						</li>
-						<li ui-sref="service.bd_schedule">
+						<li ui-sref="service.bd_schedule" title="并行任务: {{dashboard.task}}, 已完成: {{dashboard.taskRunning}}">
 							<img class="small-chart" src="images/link.png" width="32" height="32">
 							<div class="chart-detail">
 								<span class="amount"><span class="ugreen">{{dashboard.taskRunning}}</span> / {{dashboard.task}}</span>
