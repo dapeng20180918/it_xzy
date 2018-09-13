@@ -16,6 +16,7 @@ public class Reply {
 	private Integer id;
 	private Integer toplicId;
 	private String name;
+	@Column(nullable = false)
 	private String content;
 	
 	@Column(updatable = false)

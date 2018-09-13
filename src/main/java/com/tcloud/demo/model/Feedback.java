@@ -14,12 +14,14 @@ public class Feedback {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
+	@Column(nullable = false)
 	private String name;
 
 	@Column(updatable = false)
 	private String operator;
 	private Date create_date;
 	private String last_replyer;
+	@Column(nullable = false)
 	private String content;
 	private Date lastDate;
 	private int click_count;
