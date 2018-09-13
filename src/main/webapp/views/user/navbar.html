@@ -5,20 +5,20 @@
 			<ul>
 				<li ng-show="roleadmin"><span class="icon-portal float"></span> 统一自助服务门户
 					<ul class="padding20">
-						<li><a ui-sref="main.user"> > 用户管理</a></li>
-						<li><a ui-sref="main.role"> > 角色管理</a></li>
-						<li><a ui-sref="main.event"> > 事件管理</a></li>
+						<li><a ui-sref="main.user"> <img src="images/user.png" width="20" height="24" style="padding-bottom: 6px"> 用户管理</a></li>
+						<li><a ui-sref="main.role"> <img src="images/suppliers.png" width="20" height="24" style="padding-bottom: 6px"> 角色管理</a></li>
+						<li><a ui-sref="main.event"> <img src="images/order.png" width="20" height="24" style="padding-bottom: 6px"> 事件管理</a></li>
 					</ul>
 				</li>
 
 				<li><span class="icon-data float"></span> 自助数据管理服务
 					<ul class="padding20">
-						<li><a ui-sref="main.collect">  > 数据定制加工申请</a></li>
-						<li><a ui-sref="main.analyze">  > 数据挖掘分析申请</a></li>
+						<li><a ui-sref="main.collect"> <img src="images/future-projects.png" width="20" height="24" style="padding-bottom: 6px"> 数据定制加工申请</a></li>
+						<li><a ui-sref="main.analyze"> <img src="images/publish.png" width="20" height="24" style="padding-bottom: 6px"> 数据挖掘分析申请</a></li>
 					</ul>
 				</li>
-				<li ng-show="roleadmin"><span class="icon-go float"></span><a href="http://172.16.206.187:9090/#/service/data_source" target="_blank"> 转到业务管理平台</a></li>
-				<!-- <li><span class="icon-go float"></span><a ui-sref="service.data_source"> 转到业务管理平台</a></li> -->
+				<li ng-show="roleadmin"><span class="icon-go float"></span><a href="http://172.16.206.187:9090/#/service/dashboard" target="_blank"> 转到业务管理平台</a></li>
+				<li><span class="icon-go float"></span><a ui-sref="service.dashboard"> 转到业务管理平台</a></li>
 			</ul>
 		</div>
 		<!-- /sidebar end--> 

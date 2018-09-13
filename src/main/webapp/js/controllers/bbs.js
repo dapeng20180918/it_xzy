@@ -57,7 +57,7 @@ myApp.controller('BBSCtrl', ['$scope', 'auth', function ($scope, auth) {
 	$scope.replyConfirm = function(){
 		$scope.createReply.toplicId = $scope.topic.id;
 		
-		if(!$scope.createReply.content || $scope.reateReply.content==""){
+		if(!$scope.createReply.content || $scope.createReply.content==""){
 			auth.error("content is null.");
 			$scope.$broadcast("enableSubmitBtn");
 			return;
@@ -68,6 +68,7 @@ myApp.controller('BBSCtrl', ['$scope', 'auth', function ($scope, auth) {
 			query();
 			queryReply();
 			$scope.$broadcast("enableSubmitBtn");
+			$scope.createReply.content = "";
 			$('#myReply').modal('hide');
 		}, function (err) {
 			$scope.$broadcast("enableSubmitBtn");

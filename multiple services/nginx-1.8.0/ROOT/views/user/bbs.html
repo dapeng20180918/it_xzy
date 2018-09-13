@@ -58,13 +58,15 @@
 			<!-- 帖子 -->
 			<div class="widget-box" ng-show="showTopic==0">
 				<div class="mainr1-reply2">
-					<div class="widget-title h4">
-						<strong>{{topic.name}}</strong>
-						<button type="button" class="custom-right-button" ng-click="showTopic=1"><img src="/images/home.png" style="width:32px;height:32px;"></button>
-						<button type="button" class="custom-right-button" data-toggle="modal" data-target="#myReply"><img src="/images/email.png" style="width:32px;height:32px;"></button>
+					<div>
+						<div class="custom-right-button">
+							<button type="button" data-toggle="modal" data-target="#myReply"><img src="/images/email.png" style="width:32px;height:32px;"></button>
+							<button type="button" ng-click="showTopic=1"><img src="/images/home.png" style="width:32px;height:32px;"></button>
+						</div>
+						<div class="widget-title h4 strong">{{topic.name}}</div>
 					</div>
 					
-					<div class="widget-content nopadding">
+					<div class="widget-content-top nopadding">
 						<ul class="recent-posts">
 							<li>
 								<div class="user-thumb search-user">
@@ -120,7 +122,6 @@
 									</div>
 								</div>
 							</form>	
-
 						</div>
 						<div class="modal-footer">
 							<div class="form-group">
