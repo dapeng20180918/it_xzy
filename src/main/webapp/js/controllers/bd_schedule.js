@@ -12,6 +12,8 @@ myApp.controller('BDScheduleCtrl', ['$scope', 'auth',  function ($scope, auth) {
 	$scope.expandedNodes = [];
 	$scope.hostMap = auth.hostMap;
 	$scope.resultPicture = "/images/result/1.jpg";
+	
+	auth.reSizeTable();
 
 	$scope.getStatusPic = function(status){
 		return auth.getStatusPic(status);

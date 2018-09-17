@@ -4,6 +4,8 @@ myApp.controller('RoleCtrl', ['$scope', 'auth', '$filter', '$window', function (
 	$scope.users = [];
 	$scope.ruleArray = [];
 	
+	auth.reSizeTable();
+	
 	function reset(){
 		$scope.selectedUser = {};
 		$scope.createUser = {};

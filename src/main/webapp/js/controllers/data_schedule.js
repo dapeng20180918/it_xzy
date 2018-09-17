@@ -9,6 +9,8 @@ myApp.controller('DataScheduleCtrl', ['$scope', 'auth', function ($scope, auth) 
 	$scope.dataCollectorArray = [];
 	$scope.dataCollectorMap = {};
 
+	auth.reSizeTable();
+	
 	for (var i = 0; i < $scope.scheduleStatusArray.length; i++){
 		var one = $scope.scheduleStatusArray[i];
 		$scope.scheduleStatusMap[one.value] = one.key;

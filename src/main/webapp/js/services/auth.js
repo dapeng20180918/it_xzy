@@ -141,5 +141,15 @@ myApp.service('auth', ['$q', '$rootScope', '$http', '$resource', function ($q, $
         }
     }
     
-
+    // resize
+    self.reSizeTable = function(){
+        self.info("reSizeTable");
+        $(".mainr1-z").css({"left": $("#myLeft").offset().left});   
+    }
+    
+    $(window).resize(function() {
+        if($("#myLeft").length){
+            self.reSizeTable();   
+        }
+    });
 }]);

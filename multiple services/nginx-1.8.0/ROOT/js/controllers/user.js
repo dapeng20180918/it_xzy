@@ -7,6 +7,8 @@ myApp.controller('UserCtrl', ['$scope', 'auth', '$filter', function ($scope, aut
 	$scope.roleArray = [];
 	$scope.searchKey = "";
 
+	auth.reSizeTable();
+
 	$scope.getStatusPic = function(status){
 		return auth.getUserStatusPic(status);
 	}

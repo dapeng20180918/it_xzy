@@ -5,13 +5,7 @@ myApp.controller('DataStorageCtrl', ['$scope', 'auth',  function ($scope, auth) 
 	$scope.selectName = "资料名称";
 	$scope.dsinfo = [];
 
-	reSizeTable();
-	
-	$(window).resize(function() {
-		reSizeTable();
-	});
-
-	function reSizeTable(){
+	$scope.reSizeTable = function(){
 		var len1 = $(window).height() - $("#storageTree").offset().top;
 		len1  = len1 + 'px';
 		$("#storageTree").css({"max-height": len1});
@@ -20,6 +14,14 @@ myApp.controller('DataStorageCtrl', ['$scope', 'auth',  function ($scope, auth) 
 		len2  = len2 + 'px';
 		$("#storageRight").css({"max-height": len2});
 	}
+
+	$scope.reSizeTable();
+	
+	$(window).resize(function() {
+		if($("#storageTree").length){
+			$scope.reSizeTable();
+		}
+	});
 	
 	$scope.treeOptions = {  
 		nodeChildren: "child",  

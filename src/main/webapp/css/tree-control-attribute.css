@@ -65,17 +65,22 @@
 
 [treecontrol].tree-custom li.tree-expanded i.tree-branch-head {
     padding: 1px 10px;
-    background: url("../images/host.png") no-repeat;
+    background: url("../images/host.png") 0px -3px no-repeat;
+    background-size: 20px;
 }
 
 [treecontrol].tree-custom li.tree-collapsed i.tree-branch-head {
     padding: 1px 10px;
-    background: url("../images/host.png") no-repeat;
+    background: url("../images/host.png") 0px -1px no-repeat;
+    /*background: url("../images/loading.gif")  no-repeat;*/
+    background-size: 18px;
 }
 
 [treecontrol].tree-custom li.tree-leaf i.tree-leaf-head {
     padding: 1px 18px;
     /*background: url("../images/th.png") no-repeat;*/
+    /*background: url("../images/loading.gif")  no-repeat;*/
+    /*background-size: 18px;*/
 }
 
 [treecontrol].tree-custom li .tree-selected {

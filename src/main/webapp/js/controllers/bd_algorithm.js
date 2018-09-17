@@ -8,6 +8,8 @@ $scope.users = [];
 
 	query();
 
+	auth.reSizeTable();
+	
 	function reset(){
 		$scope.selectedUser = {};
 		$scope.createUser = {class_type:"数据加工"};

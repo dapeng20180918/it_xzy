@@ -4,7 +4,7 @@ myApp.controller('DashboardCtrl', ['$scope', 'auth', function ($scope, auth) {
 	$scope.dashboard = {};
 	$scope.dashboard.hostLength = auth.hostArray.length;
 	query();
-
+	
 	function query(){
 		//query user
 		auth.dashboardResource.get({}, function (resp) {

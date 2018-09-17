@@ -4,7 +4,9 @@ myApp.controller('BDCloud', ['$scope', 'auth',  function ($scope, auth) {
 	reSizeTable();
 	
 	$(window).resize(function() {
-		reSizeTable();
+		if($("#myIframe").length){
+			reSizeTable();
+		}
 	});
 
 	function reSizeTable(){

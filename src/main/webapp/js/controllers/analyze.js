@@ -12,6 +12,8 @@ myApp.controller('AnalyzeCtrl', ['$scope', 'auth', function ($scope, auth) {
 	$scope.hostMap = auth.hostMap;
 	$scope.resultPicture = "/images/result/1.jpg";
 
+	auth.reSizeTable();
+	
 	$scope.treeOptions = {  
 			nodeChildren: "threads",  
 			dirSelectable: true,

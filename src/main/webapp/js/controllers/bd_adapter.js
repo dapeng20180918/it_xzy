@@ -5,6 +5,8 @@ myApp.controller('BDAdapterCtrl', ['$scope', 'auth', function ($scope, auth) {
 	$scope.searchKey = "";
 	$scope.storageTypeArray = auth.storageTypeArray;
 	
+	auth.reSizeTable();
+	
 	function reset(){
 		$scope.selectedUser = {};
 		$scope.createUser = {type:"关系数据库表"};

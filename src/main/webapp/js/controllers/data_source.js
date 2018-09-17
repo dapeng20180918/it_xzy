@@ -4,6 +4,8 @@ myApp.controller('DataSourceCtrl', ['$scope', 'auth', '$filter', function ($scop
 	$scope.users = [];
 	$scope.searchKey = "";
 
+	auth.reSizeTable();
+	
 	function reset(){
 		$scope.selectedUser = {};
 		$scope.createUser = {};
@@ -14,7 +16,7 @@ myApp.controller('DataSourceCtrl', ['$scope', 'auth', '$filter', function ($scop
 	}
 
 	query();
-
+	
 	$scope.clickRadio = function(user){
 		$("tr[value]").removeClass("success");
 		$("tr[value=\'" + user.id + "\']").addClass("success");

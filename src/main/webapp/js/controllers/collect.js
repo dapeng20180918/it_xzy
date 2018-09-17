@@ -20,6 +20,8 @@ myApp.controller('CollectCtrl', ['$scope', '$http', 'auth', function ($scope, $h
 	$scope.expandedNodes = [];
 	$scope.hostMap = auth.hostMap;
 	
+	auth.reSizeTable();
+	
 	function getDataSize(){//MB
 		var start = $scope.datestart;
 		var end = $scope.dateend;

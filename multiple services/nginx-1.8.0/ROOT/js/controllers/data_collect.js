@@ -11,6 +11,8 @@ myApp.controller('DataCollectCtrl', ['$scope', 'auth', '$filter', function ($sco
 	$scope.treeData = auth.treeData;
 	$scope.showCreateTree = false;
 
+	auth.reSizeTable();
+
 	$scope.treeOptions = {  
 		nodeChildren: "child",  
 		dirSelectable: true,
